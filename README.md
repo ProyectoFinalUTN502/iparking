@@ -6,6 +6,10 @@ Repositorio de Aplicacion Mobile para Sistema iParking
 - Android SDK V19 y V23
 - Xamarin Android Player con:  
 	- Vm Nexus 5 (KitKat) Android 4.4.2 y API 19 en 1080 x 1920
+  
+## Configuracion Visual Studio 2015  
+
+- Tools > Options > Xamarin > Android Settings > Preserve Aplication Data/Cache on device between deploys
 
 ## Directorios
 
