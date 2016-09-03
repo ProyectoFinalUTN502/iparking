@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0AD4e"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:weightSum="100">
+    <TextView
+        android:text="Bienvenido a iParking!"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/textViewTitle"
+        android:textColor="#F9F9F9"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:layout_weight="10"
+        android:textStyle="bold" />
+    <TextView
+        android:text="Ingrese sus datos para Continuar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:id="@+id/textViewInstructions"
+        android:textColor="#F9F9F9"
+        android:gravity="center_horizontal"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/txtUserEmail"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Email"
+        android:textColor="#F9F9F9" />
+    <EditText
+        android:id="@+id/txtUserPassword"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Password"
+        android:textColor="#F9F9F9" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:id="@+id/space1" />
+    <Button
+        android:id="@+id/btnLogin"
+        android:text="Ingresar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#ED9C28"
+        android:textColor="#FFFFFF" />
+    <TextView
+        android:id="@+id/txtNewUser"
+        android:text="No tenes cuenta? Create una Aca!"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:textColor="#F9F9F9"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+</LinearLayout>

@@ -34,6 +34,7 @@ namespace iparking
                 // Redireccionar a Instrucciones
                 Intent intent = new Intent(this, typeof(InstructionsFirstActivity));
                 this.StartActivity(intent);
+                this.Finish();
             }
             else
             {

@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace iparking
 {
-    [Activity(Label = "InstructionsThirdActivity", Theme = "@style/MyTheme.Instructions")]
+    [Activity(Label = "InstructionsThirdActivity", Theme = "@style/MyTheme.Base")]
     public class InstructionsThirdActivity : Activity
     {
         Button mButtonFinish;
@@ -29,6 +29,11 @@ namespace iparking
         private void MButtonFinish_Click(object sender, EventArgs e)
         {
             // De aca va a Login
+            Intent intent = new Intent(this, typeof(LoginActivity));
+            this.StartActivity(intent);
+            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+            this.Finish();
+
         }
     }
 }

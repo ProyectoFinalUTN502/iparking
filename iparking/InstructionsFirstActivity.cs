@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace iparking
 {
-    [Activity(Label = "InstructionsFirstActivity", Theme = "@style/MyTheme.Instructions" )]
+    [Activity(Label = "InstructionsFirstActivity", Theme = "@style/MyTheme.Base" )]
     public class InstructionsFirstActivity : Activity
     {
         Button mButtonNext;
@@ -30,7 +30,8 @@ namespace iparking
         {
             Intent intent = new Intent(this, typeof(InstructionsSecondActivity));
             this.StartActivity(intent);
-            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);    
+            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+            this.Finish();   
         }
     }
 }
