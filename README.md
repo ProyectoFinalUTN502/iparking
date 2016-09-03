@@ -15,3 +15,11 @@ forma Android entiende que son "Extras" y te permite accederlos de manera litera
 - Resources/layout: El diseño de las vistas de la aplicacion (las pantallas)
 - Resources/values: Archivos de Estilo, cadenas, etc...
 
+## Componentes
+
+**Importante:** Cada vez que se instala un componente, es una buen practica, cerrar el Visual Studio y volverlo a abrir  
+Y luego de haber instalado el componente, actualizar la referencia desde el NuGet. Y reiniciar Visual Studio...  
+Una vez reiniciado, limpiar y recompilar
+
+- **Android Support Library v7 AppCompat:** Necesaria para la Splash Screen
+

@@ -8,7 +8,7 @@ using Android.OS;
 
 namespace iparking
 {
-    [Activity(Label = "iparking", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "iparking")]
     public class MainActivity : Activity
     {
         int count = 1;
