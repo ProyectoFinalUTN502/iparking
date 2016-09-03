@@ -16,9 +16,10 @@
             android:text="Preferencias de Búsqueda"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="#000000"
             android:gravity="center"
-            android:textSize="28sp" />
+            android:textSize="28sp"
+            android:textColor="#ED9C28"
+            android:textStyle="bold" />
     </LinearLayout>
 <!-- RANGO DISTANCIA-->
     <LinearLayout
@@ -118,7 +119,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="16"
+        android:layout_weight="20"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
@@ -151,20 +152,22 @@
                 android:id="@+id/radioGroupIs24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_marginLeft="10dp">
                 <RadioButton
                     android:id="@+id/radioButtonIs24Yes"
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:text="SI"
-                    android:layout_width="wrap_content" />
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/radio_color" />
                 <RadioButton
                     android:id="@+id/radioButtonIs24No"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="NO" />
+                    android:text="NO"
+                    android:buttonTint="@color/radio_color" />
             </RadioGroup>
         </LinearLayout>
     </LinearLayout>
@@ -174,7 +177,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="16"
+        android:layout_weight="20"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
@@ -207,20 +210,22 @@
                 android:id="@+id/radioGroupIsCovered"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_marginLeft="10dp">
                 <RadioButton
                     android:id="@+id/radioButtonIsCoveredYes"
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:text="SI"
-                    android:layout_width="wrap_content" />
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/radio_color" />
                 <RadioButton
                     android:id="@+id/radioButtonIsCoveredNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="NO" />
+                    android:text="NO"
+                    android:buttonTint="@color/radio_color" />
             </RadioGroup>
         </LinearLayout>
     </LinearLayout>
@@ -230,7 +235,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="25"
+        android:layout_weight="15"
         android:gravity="bottom">
         <Button
             android:id="@+id/btnRegisterProfile"

@@ -28,8 +28,7 @@
         android:layout_marginRight="15dp"
         android:hint="Email"
         android:textColor="#ED9C28"
-        android:textColorHint="#ED9C28"
-        android:shadowColor="#000000ff" />
+        android:textColorHint="#ED9C28" />
     <EditText
         android:id="@+id/txtUserPassword"
         android:inputType="textPassword"
@@ -59,7 +58,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:hint="Apellido"
-        android:textColor="#F9F9F9"
+        android:textColor="#ED9C28"
         android:textColorHint="#ED9C28" />
     <TextView
         android:id="@+id/txtRegisterError"

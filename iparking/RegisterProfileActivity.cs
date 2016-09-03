@@ -45,8 +45,21 @@ namespace iparking
 
             mButton = FindViewById<Button>(Resource.Id.btnRegisterProfile);
 
+            mButton.Click += MButton_Click;
             mSeekBarRange.ProgressChanged += MSeekBarRange_ProgressChanged;
 
+        }
+
+        private void MButton_Click(object sender, EventArgs e)
+        {
+            bool result = true;  // Aca hay que hacer el control y validacion de campos
+
+            if (result)
+            {
+                Intent intent = new Intent(this, typeof(RegisterVehicleActivity));
+                this.StartActivity(intent);
+                this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+            }     
         }
 
         private void MSeekBarRange_ProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)

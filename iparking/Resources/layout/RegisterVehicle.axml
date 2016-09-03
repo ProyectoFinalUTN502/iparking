@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:background="#F9F9F9">
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="18">
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:text="Registre su Vehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:textSize="28sp"
+            android:textColor="#ED9C28"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+<!-- Es 24 Hs. -->
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="35"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#E0E0E0">
+        <LinearLayout
+            android:id="@+id/linearLayoutVechicle"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textViewIs24"
+                android:text="Que Vehiculo estas Manejando?"
+                android:textColor="#505050"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayoutVt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="25px"
+            android:minHeight="25px">
+            <RadioGroup
+                android:id="@+id/radioGroupVt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
+                <RadioButton
+                    android:id="@+id/radioButtonCar"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Auto"
+                    android:layout_width="wrap_content"
+                    android:textSize="22sp"
+                    android:textColor="#505050"
+                    android:buttonTint="@color/radio_color" />
+                <RadioButton
+                    android:id="@+id/radioButtonMotorcicle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Motocicleta"
+                    android:textSize="22sp"
+                    android:textColor="#505050"
+                    android:buttonTint="@color/radio_color" />
+                <RadioButton
+                    android:id="@+id/radioButtonSuv"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Pick-up y SUV"
+                    android:layout_width="wrap_content"
+                    android:textSize="22sp"
+                    android:textColor="#505050"
+                    android:buttonTint="@color/radio_color" />
+                <RadioButton
+                    android:id="@+id/radioButtonVan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="VAN y Utilitarios"
+                    android:textSize="22sp"
+                    android:textColor="#505050"
+                    android:buttonTint="@color/radio_color" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+<!-- Boton -->
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="45"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/btnRegisterAll"
+            android:text="Finalizar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#ED9C28"
+            android:textColor="#F9F9F9"
+            android:layout_marginBottom="5dp" />
+    </LinearLayout>
+</LinearLayout>

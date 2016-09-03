@@ -757,32 +757,32 @@ namespace iparking
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0a003b
-			public const int abc_background_cache_hint_selector_material_dark = 2131361851;
-			
 			// aapt resource value: 0x7f0a003c
-			public const int abc_background_cache_hint_selector_material_light = 2131361852;
+			public const int abc_background_cache_hint_selector_material_dark = 2131361852;
 			
 			// aapt resource value: 0x7f0a003d
-			public const int abc_color_highlight_material = 2131361853;
+			public const int abc_background_cache_hint_selector_material_light = 2131361853;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int abc_color_highlight_material = 2131361854;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_input_method_navigation_guard = 2131361792;
 			
-			// aapt resource value: 0x7f0a003e
-			public const int abc_primary_text_disable_only_material_dark = 2131361854;
-			
 			// aapt resource value: 0x7f0a003f
-			public const int abc_primary_text_disable_only_material_light = 2131361855;
+			public const int abc_primary_text_disable_only_material_dark = 2131361855;
 			
 			// aapt resource value: 0x7f0a0040
-			public const int abc_primary_text_material_dark = 2131361856;
+			public const int abc_primary_text_disable_only_material_light = 2131361856;
 			
 			// aapt resource value: 0x7f0a0041
-			public const int abc_primary_text_material_light = 2131361857;
+			public const int abc_primary_text_material_dark = 2131361857;
 			
 			// aapt resource value: 0x7f0a0042
-			public const int abc_search_url_text = 2131361858;
+			public const int abc_primary_text_material_light = 2131361858;
+			
+			// aapt resource value: 0x7f0a0043
+			public const int abc_search_url_text = 2131361859;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int abc_search_url_text_normal = 2131361793;
@@ -793,11 +793,11 @@ namespace iparking
 			// aapt resource value: 0x7f0a0003
 			public const int abc_search_url_text_selected = 2131361795;
 			
-			// aapt resource value: 0x7f0a0043
-			public const int abc_secondary_text_material_dark = 2131361859;
-			
 			// aapt resource value: 0x7f0a0044
-			public const int abc_secondary_text_material_light = 2131361860;
+			public const int abc_secondary_text_material_dark = 2131361860;
+			
+			// aapt resource value: 0x7f0a0045
+			public const int abc_secondary_text_material_light = 2131361861;
 			
 			// aapt resource value: 0x7f0a0004
 			public const int accent_material_dark = 2131361796;
@@ -931,6 +931,9 @@ namespace iparking
 			// aapt resource value: 0x7f0a002f
 			public const int primary_text_disabled_material_light = 2131361839;
 			
+			// aapt resource value: 0x7f0a003b
+			public const int radio_color = 2131361851;
+			
 			// aapt resource value: 0x7f0a0030
 			public const int ripple_material_dark = 2131361840;
 			
@@ -958,11 +961,11 @@ namespace iparking
 			// aapt resource value: 0x7f0a0037
 			public const int switch_thumb_disabled_material_light = 2131361847;
 			
-			// aapt resource value: 0x7f0a0045
-			public const int switch_thumb_material_dark = 2131361861;
-			
 			// aapt resource value: 0x7f0a0046
-			public const int switch_thumb_material_light = 2131361862;
+			public const int switch_thumb_material_dark = 2131361862;
+			
+			// aapt resource value: 0x7f0a0047
+			public const int switch_thumb_material_light = 2131361863;
 			
 			// aapt resource value: 0x7f0a0038
 			public const int switch_thumb_normal_material_dark = 2131361848;
@@ -1534,6 +1537,9 @@ namespace iparking
 			// aapt resource value: 0x7f0b005e
 			public const int btnLogin = 2131427422;
 			
+			// aapt resource value: 0x7f0b0093
+			public const int btnRegisterAll = 2131427475;
+			
 			// aapt resource value: 0x7f0b008b
 			public const int btnRegisterProfile = 2131427467;
 			
@@ -1660,6 +1666,12 @@ namespace iparking
 			// aapt resource value: 0x7f0b0076
 			public const int linearLayoutRange2 = 2131427446;
 			
+			// aapt resource value: 0x7f0b008c
+			public const int linearLayoutVechicle = 2131427468;
+			
+			// aapt resource value: 0x7f0b008d
+			public const int linearLayoutVt = 2131427469;
+			
 			// aapt resource value: 0x7f0b0009
 			public const int listMode = 2131427337;
 			
@@ -1696,6 +1708,9 @@ namespace iparking
 			// aapt resource value: 0x7f0b003b
 			public const int radio = 2131427387;
 			
+			// aapt resource value: 0x7f0b008f
+			public const int radioButtonCar = 2131427471;
+			
 			// aapt resource value: 0x7f0b0082
 			public const int radioButtonIs24No = 2131427458;
 			
@@ -1708,11 +1723,23 @@ namespace iparking
 			// aapt resource value: 0x7f0b0088
 			public const int radioButtonIsCoveredYes = 2131427464;
 			
+			// aapt resource value: 0x7f0b0090
+			public const int radioButtonMotorcicle = 2131427472;
+			
+			// aapt resource value: 0x7f0b0091
+			public const int radioButtonSuv = 2131427473;
+			
+			// aapt resource value: 0x7f0b0092
+			public const int radioButtonVan = 2131427474;
+			
 			// aapt resource value: 0x7f0b0080
 			public const int radioGroupIs24 = 2131427456;
 			
 			// aapt resource value: 0x7f0b0087
 			public const int radioGroupIsCovered = 2131427463;
+			
+			// aapt resource value: 0x7f0b008e
+			public const int radioGroupVt = 2131427470;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int screen = 2131427349;
@@ -2053,16 +2080,19 @@ namespace iparking
 			public const int RegisterProfile = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int select_dialog_item_material = 2130903080;
+			public const int RegisterVehicle = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int select_dialog_multichoice_material = 2130903081;
+			public const int select_dialog_item_material = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int select_dialog_singlechoice_material = 2130903082;
+			public const int select_dialog_multichoice_material = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int support_simple_spinner_dropdown_item = 2130903083;
+			public const int select_dialog_singlechoice_material = 2130903083;
+			
+			// aapt resource value: 0x7f03002c
+			public const int support_simple_spinner_dropdown_item = 2130903084;
 			
 			static Layout()
 			{
