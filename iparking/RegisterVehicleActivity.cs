@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace iparking
 {
-    [Activity(Label = "RegisterVehicleActivity", Theme = "@style/MyTheme.Base", NoHistory = true)]
+    [Activity(Label = "RegisterVehicleActivity", Theme = "@style/MyTheme.Base")]
     public class RegisterVehicleActivity : Activity
     {
         RadioButton mRadioCar;

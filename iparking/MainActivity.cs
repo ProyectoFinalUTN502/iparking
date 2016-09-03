@@ -8,7 +8,7 @@ using Android.OS;
 
 namespace iparking
 {
-    [Activity(Label = "iparking")]
+    [Activity(Label = "iparking", Theme = "@style/MyTheme.Base", NoHistory = true)]
     public class MainActivity : Activity
     {
         int count = 1;

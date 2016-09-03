@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace iparking
 {
-    [Activity(Label = "RegisterProfileActivity", Theme = "@style/MyTheme.Base", NoHistory = true)]
+    [Activity(Label = "RegisterProfileActivity", Theme = "@style/MyTheme.Base")]
     public class RegisterProfileActivity : Activity
     {
         SeekBar mSeekBarRange;
