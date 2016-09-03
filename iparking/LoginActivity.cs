@@ -32,7 +32,10 @@ namespace iparking
 
         private void MNewUser_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(" Nueva Cuenta");
+            Intent intent = new Intent(this, typeof(RegisterUserActivity));
+            this.StartActivity(intent);
+            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+            this.Finish();
         }
 
         private void MButtonLogin_Click(object sender, EventArgs e)
