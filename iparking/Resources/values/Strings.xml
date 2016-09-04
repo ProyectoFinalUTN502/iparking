@@ -2,4 +2,5 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">iparking</string>
+    <string name="google_maps_key">AIzaSyBEUsgLqfDt_TmY-qeZVTVnytjeMyof2hI</string>
 </resources>

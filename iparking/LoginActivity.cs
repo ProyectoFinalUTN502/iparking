@@ -40,7 +40,12 @@ namespace iparking
 
         private void MButtonLogin_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Ingreso Nuevo Usuario");
+
+            // Esto es PROVISORIO!!!! Se agrego para facilitar el Debugging
+            Intent intent = new Intent(this, typeof(MainActivity));
+            this.StartActivity(intent);
+            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+            this.Finish();
         }
     }
 }

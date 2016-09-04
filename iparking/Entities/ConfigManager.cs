@@ -15,5 +15,11 @@ namespace iparking.Entities
     public class ConfigManager
     {
         public const String SharedFile = "iparking";
+
+        // Coordenadas por defecto para centrar el Mapa (Obelisco -34.6037345,-58.3837591)
+        public const Double DefaultLatMap = -34.542496;
+        public const Double DefaultLongMap = -58.5670585;
+        // Un Zoom que me permite ver bien donde estoy parado
+        public const Int32 DefaultZoomMap = 15;
     }
 }

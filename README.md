@@ -10,6 +10,7 @@ Repositorio de Aplicacion Mobile para Sistema iParking
 ## Configuracion Visual Studio 2015  
 
 - Tools > Options > Xamarin > Android Settings > Preserve Aplication Data/Cache on device between deploys
+- En Properties > Android Options > Advanced > Advanced Android Building Settings > Cambiar el Java Heap Size a 1G
 
 ## Directorios
 
@@ -26,4 +27,6 @@ Y luego de haber instalado el componente, actualizar la referencia desde el NuGe
 Una vez reiniciado, limpiar y recompilar
 
 - **Android Support Library v7 AppCompat:** Necesaria para la Splash Screen
+- **Google Play Services - Maps:** Necesaria para el uso de Google Maps. Una vez modificado el Heap Size, limpiar 
+la solucion y volver a compilar (descarga librerias de Java)
 
