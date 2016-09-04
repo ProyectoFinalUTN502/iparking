@@ -1456,16 +1456,22 @@ namespace iparking
 			public const int abc_textfield_search_material = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int Icon = 2130837579;
-			
-			// aapt resource value: 0x7f02004e
-			public const int notification_template_icon_bg = 2130837582;
+			public const int DialogButtonStyle = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int splash = 2130837580;
+			public const int DialogNextButtonStyle = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int splash_screen = 2130837581;
+			public const int Icon = 2130837581;
+			
+			// aapt resource value: 0x7f020050
+			public const int notification_template_icon_bg = 2130837584;
+			
+			// aapt resource value: 0x7f02004e
+			public const int splash = 2130837582;
+			
+			// aapt resource value: 0x7f02004f
+			public const int splash_screen = 2130837583;
 			
 			static Drawable()
 			{

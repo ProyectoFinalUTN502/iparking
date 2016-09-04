@@ -70,10 +70,11 @@
             android:id="@+id/linearLayout2"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:gravity="center_vertical">
+            android:gravity="center">
             <Button
                 android:text="Siguiente"
-                android:layout_width="match_parent"
+                android:background="@drawable/DialogNextButtonStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonNext"
                 android:gravity="center" />
@@ -93,13 +94,16 @@
             android:id="@+id/linearLayout3"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:gravity="center_vertical">
+            android:gravity="center">
             <Button
                 android:text="Ir"
-                android:layout_width="match_parent"
+                android:background="@drawable/DialogButtonStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonGo"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="24sp"
+                android:textColor="#F9F9F9" />
             <TextView
                 android:text="-58.5664819"
                 android:textAppearance="?android:attr/textAppearanceSmall"
