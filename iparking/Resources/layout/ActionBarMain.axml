@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="fill_parent"
-    android:layout_height="75dp"
+    android:layout_height="60dp"
     android:weightSum="100">
     <LinearLayout
         android:orientation="vertical"
@@ -37,11 +37,15 @@
         android:focusable="true"
         android:focusableInTouchMode="true">
         <ImageView
-            android:src="@drawable/menu_main"
+            android:src="@drawable/information_white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imageView4"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="false" />
+            android:adjustViewBounds="false"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" />
     </LinearLayout>
 </LinearLayout>

@@ -12,6 +12,14 @@ Repositorio de Aplicacion Mobile para Sistema iParking
 - Tools > Options > Xamarin > Android Settings > Preserve Aplication Data/Cache on device between deploys
 - En Properties > Android Options > Advanced > Advanced Android Building Settings > Cambiar el Java Heap Size a 1G
 
+## Release de APK (Para Testing y Demos)
+
+- 1. Cambiar el Modo de uso del VS a Release
+- 2. Limpiar la Solucion
+- 3. Compilar (Build) > Exportar a Paquete Android (*.apk)
+- 4. En la carpeta de la solucion: bin > Release 
+- 5. Utilizar el archivo que sea nombre-Signed.apk
+
 ## Directorios
 
 - Assets: Se incluyen archivos como fonts, musica o video necesarios para la aplicacion. De esta

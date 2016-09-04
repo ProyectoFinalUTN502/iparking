@@ -14,7 +14,7 @@ using iparking.Entities;
 
 namespace iparking
 {
-    [Activity(Label = "SlpashActivity", Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
+    [Activity(Label = "iParking", Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
     public class SlpashActivity : Activity
     {
         //static readonly string TAG = "X:" + typeof(SplashActivity).Name;
