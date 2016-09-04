@@ -14,11 +14,10 @@ using iparking.Managment;
 
 namespace iparking
 {
-    [Activity(Label = "iparking", Theme = "@style/MyTheme.Base", NoHistory = true, LaunchMode = Android.Content.PM.LaunchMode.SingleTask)]
+    [Activity(Label = "iParking",Theme = "@style/CustomActionBarTheme", NoHistory = true, LaunchMode = Android.Content.PM.LaunchMode.SingleTask)]
     public class MainActivity : Activity, IOnMapReadyCallback
     {
         private Parkinglot parkinglot;
-        private TextView mTextContent;
         private GoogleMap mMap;
         private MarkerOptions mSelectedParkingMarkerOptions;
         private MarkerOptions mUserMarkerOptions;
@@ -27,12 +26,11 @@ namespace iparking
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
+            ActionBar.SetCustomView(Resource.Layout.ActionBarMain);
+            ActionBar.SetDisplayShowCustomEnabled(true);
+            
             SetContentView(Resource.Layout.Main);
             SetUpMap();
-
-            mTextContent = FindViewById<TextView>(Resource.Id.textViewContent);
-
         }
 
         private void Dialog_mGo(object sender, OnGoEventArgs e)
@@ -63,9 +61,6 @@ namespace iparking
                 mMap.AddMarker(mSelectedParkingMarkerOptions);
                 mMap.AddMarker(mUserMarkerOptions);
             }
-
-
-            //mTextContent.Text = "El Contenido es: " + parkinglot.name + " " + parkinglot.address;
         }
 
         private void SetUpMap()

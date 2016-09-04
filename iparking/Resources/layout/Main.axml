@@ -3,19 +3,10 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#F9F9F9"
-    android:weightSum="100">
-    <TextView
-        android:id="@+id/textViewContent"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="20" />
+    android:background="#F9F9F9">
     <fragment
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="80"
+        android:layout_height="match_parent"
         android:name="com.google.android.gms.maps.MapFragment" />
 </LinearLayout>
