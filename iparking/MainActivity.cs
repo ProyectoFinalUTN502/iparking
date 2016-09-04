@@ -6,13 +6,23 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using iparking.Entities;
+using iparking.Managment;
+
 namespace iparking
 {
-    [Activity(Label = "iparking", Theme = "@style/MyTheme.Base", NoHistory = true)]
+    [Activity(
+        Label = "iparking", 
+        Theme = "@style/MyTheme.Base", 
+        NoHistory = true, 
+        LaunchMode = Android.Content.PM.LaunchMode.SingleTask
+        )]
+
+
     public class MainActivity : Activity
     {
-        int count = 1;
-
+        private Parkinglot parkinglot;
+        private TextView mTextContent;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -20,11 +30,20 @@ namespace iparking
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+            mTextContent = FindViewById<TextView>(Resource.Id.textViewContent);
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            FragmentTransaction trans = FragmentManager.BeginTransaction();
+            DialogParkingSearch dialog = new DialogParkingSearch();
+            dialog.Show(trans, "Dialog Parking Search");
+            dialog.mGo += Dialog_mGo;
+
+        }
+
+        private void Dialog_mGo(object sender, OnGoEventArgs e)
+        {
+            parkinglot = e.Parkinglot;
+
+            mTextContent.Text = "El Contenido es: " + parkinglot.name + " " + parkinglot.address;
         }
     }
 }

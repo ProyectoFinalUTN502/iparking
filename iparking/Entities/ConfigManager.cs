@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace iparking.Entities
 {
-    class ConfigManager
+    public class ConfigManager
     {
         public const String SharedFile = "iparking";
     }
