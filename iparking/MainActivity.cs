@@ -22,6 +22,8 @@ namespace iparking
         private MarkerOptions mSelectedParkingMarkerOptions;
         private MarkerOptions mUserMarkerOptions;
 
+        private ImageView mImageMore;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -30,7 +32,18 @@ namespace iparking
             ActionBar.SetDisplayShowCustomEnabled(true);
             
             SetContentView(Resource.Layout.Main);
+
+            mImageMore = FindViewById<ImageView>(Resource.Id.imageViewMore);
+            mImageMore.Click += MImageMore_Click;
+
             SetUpMap();
+        }
+
+        private void MImageMore_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(MoreOptionsActivity));
+            this.StartActivity(intent);
+            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
         }
 
         private void Dialog_mGo(object sender, OnGoEventArgs e)
@@ -93,41 +106,6 @@ namespace iparking
             DialogParkingSearch dialog = new DialogParkingSearch();
             dialog.Show(trans, "Dialog Parking Search");
             dialog.mGo += Dialog_mGo;
-
-
-            //-----------------------------------------------------------------------------------------------------
-            //MarkerOptions options = new MarkerOptions();
-            //options.SetPosition(latlng);
-            //options.SetTitle("Casa de Cesar");
-            //options.SetSnippet("Aca vive el astro de la programacion Cesar Cappetto");
-            //options.Draggable(true);
-
-            //mMap.AddMarker(options);
-            //mMap.AddMarker(new MarkerOptions()
-            //    .SetPosition(latlng2)
-            //    .SetTitle("El otro marcador")
-            //    .SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
-
-            /**
-             * 
-             * IMPORTANTE: Si se quiere usar Info Windows, no se tiene que agregar un 
-             * evento click al marcador. O se usa el CLick, o se usa Info WIndows
-             * 
-             */
-
-
-            //mMap.MarkerClick += MMap_MarkerClick;
-            //mMap.MarkerDragEnd += MMap_MarkerDragEnd;
-
-
-            // Sete el Info Windows
-            //mMap.SetInfoWindowAdapter(this);
-
-            // Agregarle Eventos a la Info Window
-            // La Info Window solo puede contener eventos que involucren a TODA la ventana
-            // No a componentes internos
-
-            //mMap.SetOnInfoWindowClickListener(this);
 
         }
 
