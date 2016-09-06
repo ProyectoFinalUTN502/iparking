@@ -41,13 +41,13 @@ namespace iparking
 
         private void MImageMore_Click(object sender, EventArgs e)
         {
-            //Intent intent = new Intent(this, typeof(MoreOptionsActivity));
-            //this.StartActivity(intent);
-            //this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
-
-            Intent intent = new Intent(this, typeof(NavigationActivity));
+            Intent intent = new Intent(this, typeof(MoreOptionsActivity));
             this.StartActivity(intent);
-            
+            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+
+            //Intent intent = new Intent(this, typeof(NavigationActivity));
+            //this.StartActivity(intent);
+
         }
 
         private void Dialog_mGo(object sender, OnGoEventArgs e)
