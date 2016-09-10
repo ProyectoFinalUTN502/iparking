@@ -65,11 +65,18 @@
         android:text="** Los datos ingresados no son validos **"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="16"
+        android:layout_weight="12"
         android:textColor="#e5412d"
         android:gravity="center"
         android:visibility="invisible"
         android:textStyle="bold" />
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarRegister"
+        android:layout_weight="5"
+        android:visibility="invisible" />
     <Button
         android:id="@+id/btnRegisterUser"
         android:text="Continuar"

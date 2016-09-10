@@ -1837,14 +1837,14 @@ namespace iparking
 			// aapt resource value: 0x7f0b00a1
 			public const int btnNewSearch = 2131427489;
 			
-			// aapt resource value: 0x7f0b00bb
-			public const int btnRegisterAll = 2131427515;
+			// aapt resource value: 0x7f0b00bc
+			public const int btnRegisterAll = 2131427516;
+			
+			// aapt resource value: 0x7f0b00b4
+			public const int btnRegisterProfile = 2131427508;
 			
 			// aapt resource value: 0x7f0b00b3
-			public const int btnRegisterProfile = 2131427507;
-			
-			// aapt resource value: 0x7f0b00b2
-			public const int btnRegisterUser = 2131427506;
+			public const int btnRegisterUser = 2131427507;
 			
 			// aapt resource value: 0x7f0b0089
 			public const int buttonBegin = 2131427465;
@@ -2026,11 +2026,11 @@ namespace iparking
 			// aapt resource value: 0x7f0b006c
 			public const int linearLayoutRange2 = 2131427436;
 			
-			// aapt resource value: 0x7f0b00b4
-			public const int linearLayoutVechicle = 2131427508;
-			
 			// aapt resource value: 0x7f0b00b5
-			public const int linearLayoutVt = 2131427509;
+			public const int linearLayoutVechicle = 2131427509;
+			
+			// aapt resource value: 0x7f0b00b6
+			public const int linearLayoutVt = 2131427510;
 			
 			// aapt resource value: 0x7f0b0016
 			public const int listMode = 2131427350;
@@ -2065,6 +2065,9 @@ namespace iparking
 			// aapt resource value: 0x7f0b00a0
 			public const int progressBar = 2131427488;
 			
+			// aapt resource value: 0x7f0b00b2
+			public const int progressBarRegister = 2131427506;
+			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
 			
@@ -2074,8 +2077,8 @@ namespace iparking
 			// aapt resource value: 0x7f0b0046
 			public const int radio = 2131427398;
 			
-			// aapt resource value: 0x7f0b00b7
-			public const int radioButtonCar = 2131427511;
+			// aapt resource value: 0x7f0b00b8
+			public const int radioButtonCar = 2131427512;
 			
 			// aapt resource value: 0x7f0b0076
 			public const int radioButtonIs24No = 2131427446;
@@ -2089,14 +2092,14 @@ namespace iparking
 			// aapt resource value: 0x7f0b007b
 			public const int radioButtonIsCoveredYes = 2131427451;
 			
-			// aapt resource value: 0x7f0b00b8
-			public const int radioButtonMotorcicle = 2131427512;
-			
 			// aapt resource value: 0x7f0b00b9
-			public const int radioButtonSuv = 2131427513;
+			public const int radioButtonMotorcicle = 2131427513;
 			
 			// aapt resource value: 0x7f0b00ba
-			public const int radioButtonVan = 2131427514;
+			public const int radioButtonSuv = 2131427514;
+			
+			// aapt resource value: 0x7f0b00bb
+			public const int radioButtonVan = 2131427515;
 			
 			// aapt resource value: 0x7f0b0074
 			public const int radioGroupIs24 = 2131427444;
@@ -2104,8 +2107,8 @@ namespace iparking
 			// aapt resource value: 0x7f0b007a
 			public const int radioGroupIsCovered = 2131427450;
 			
-			// aapt resource value: 0x7f0b00b6
-			public const int radioGroupVt = 2131427510;
+			// aapt resource value: 0x7f0b00b7
+			public const int radioGroupVt = 2131427511;
 			
 			// aapt resource value: 0x7f0b000c
 			public const int satellite = 2131427340;

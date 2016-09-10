@@ -9,8 +9,13 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.Net;
+using System.Collections.Specialized;
+
 using iparking.Entities;
-using System.Text.RegularExpressions;
+using iparking.Controllers;
+using iparking.Managment;
+using Newtonsoft.Json;
 
 namespace iparking
 {
@@ -22,6 +27,7 @@ namespace iparking
         EditText mUserName;
         EditText mUserLastName;
         TextView mTextError;
+        ProgressBar mProgress;
 
         Button mButtonRegisterUser;
 
@@ -39,6 +45,9 @@ namespace iparking
             mUserLastName = FindViewById<EditText>(Resource.Id.txtUserLastName);
             mTextError = FindViewById<TextView>(Resource.Id.txtRegisterError);
 
+            mProgress = FindViewById<ProgressBar>(Resource.Id.progressBarRegister);
+            mProgress.Visibility = ViewStates.Invisible;
+
             mButtonRegisterUser = FindViewById<Button>(Resource.Id.btnRegisterUser);
             mButtonRegisterUser.Click += MButtonRegisterUser_Click;
 
@@ -53,36 +62,69 @@ namespace iparking
             client.name = mUserName.Text.Trim();
             client.lastName = mUserLastName.Text.Trim();
 
-            if (validateClient(client))
+            if (ClientController.validate(client))
             {
+                mProgress.Visibility = ViewStates.Visible;
                 mTextError.Visibility = ViewStates.Invisible;
-                Intent intent = new Intent(this, typeof(RegisterProfileActivity));
-                this.StartActivity(intent);
-                this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+                // Enviar Info al Servidor
+                RegisterClient();
             }
             else
             {
+                mTextError.Text = "La informacion ingresada no es valida";
                 mTextError.Visibility = ViewStates.Visible;
             }
         }
 
-        private bool validateClient(Client client)
+        public void RegisterClient()
         {
-            bool result = true;
+            System.Net.WebClient wclient = new System.Net.WebClient();
+            Uri uri = new Uri(ConfigManager.WebService + "/newClient.php");
+            NameValueCollection param = new NameValueCollection();
 
-            
-            if (client.email == String.Empty) { result = false;}
-            if (!validateClientEmail(client.email)) { result = false; }
-            if (client.password == String.Empty) { result = false; }
-            if (client.name == String.Empty) { result = false; }
-            if (client.lastName == String.Empty) { result = false; }
+            param.Add("email", client.email);
+            param.Add("password", client.HashPassword());
+            param.Add("name", client.name);
+            param.Add("lastName", client.lastName);
+            param.Add("macAddress", DeviceManager.GetMacAdress(this));
 
-            return result;
+            wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted;
+            wclient.UploadValuesAsync(uri, param);
         }
 
-        private bool validateClientEmail(String email)
+        private void Wclient_UploadValuesCompleted(object sender, UploadValuesCompletedEventArgs e)
         {
-            return Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            string json = Encoding.UTF8.GetString(e.Result);
+            OperationResult or = JsonConvert.DeserializeObject<OperationResult>(json);
+
+            // Oculto la Progressbar
+            RunOnUiThread(() => { mProgress.Visibility = ViewStates.Invisible;});
+
+            if (or.error)
+            {
+                // Ha ocurrido un error!
+                RunOnUiThread(() =>
+                {
+                    mTextError.Text = "Ah ocurrido un error al realizar el registro\nPor favor, intente nuevamente mas tarde";
+                    mTextError.Visibility = ViewStates.Visible;
+                });
+            }
+            else
+            {
+                // Guardo el Id de mi nuevo Cliente
+                ISharedPreferences pref = Application.Context.GetSharedPreferences(ConfigManager.SharedFile, FileCreationMode.Private);
+                ISharedPreferencesEditor edit = pref.Edit();
+                edit.PutString("id", or.data.ToString());
+                edit.PutString("email", client.email);
+                edit.PutString("password", client.HashPassword());
+                edit.Apply();
+
+                // Cargo la vista de Registro de Perfil
+                Intent intent = new Intent(this, typeof(RegisterProfileActivity));
+                this.StartActivity(intent);
+                this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+            }
+
         }
     }
 }

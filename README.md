@@ -35,6 +35,7 @@ Y luego de haber instalado el componente, actualizar la referencia desde el NuGe
 Una vez reiniciado, limpiar y recompilar
 
 - **Android Support Library v7 AppCompat:** Necesaria para la Splash Screen
+- **Json.Net:** Necesaria para poder utilizar Json en la solucion. Es de Newtonsoft
 - **Google Play Services - Maps:** Necesaria para el uso de Google Maps. Una vez modificado el Heap Size, limpiar 
 la solucion y volver a compilar (descarga librerias de Java)
 
