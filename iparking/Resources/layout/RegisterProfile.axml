@@ -233,20 +233,32 @@
 <!-- Boton -->
     <LinearLayout
         android:id="@+id/linearLayout7"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15"
-        android:gravity="bottom">
+        android:layout_weight="18"
+        android:gravity="bottom"
+        android:weightSum="100">
+        <TextView
+            android:text="La informacion ingresada no es valida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewError"
+            android:layout_weight="60"
+            android:textColor="#e5412d"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:visibility="invisible" />
         <Button
             android:id="@+id/btnRegisterProfile"
             android:text="Continuar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:background="#ED9C28"
             android:textColor="#F9F9F9"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="10dp"
+            android:layout_weight="40" />
     </LinearLayout>
 </LinearLayout>

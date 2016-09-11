@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="18">
+        android:layout_weight="10">
         <TextView
             android:id="@+id/textViewTitle"
             android:text="Registre su Vehiculo"
@@ -21,6 +21,49 @@
             android:textColor="#ED9C28"
             android:textStyle="bold"
             android:layout_marginTop="10dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#E0E0E0">
+        <LinearLayout
+            android:id="@+id/linearLayoutVechicle"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textViewIs24"
+                android:text="Nombre del Vehiculo"
+                android:textColor="#505050"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayoutVt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="25px"
+            android:minHeight="25px" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
     </LinearLayout>
 <!-- Es 24 Hs. -->
     <LinearLayout
@@ -41,7 +84,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/textViewIs24"
-                android:text="Que Vehiculo estas Manejando?"
+                android:text="Tipo de Vehiculo"
                 android:textColor="#505050"
                 android:textSize="18sp"
                 android:layout_marginTop="5dp"
@@ -107,16 +150,28 @@
 <!-- Boton -->
     <LinearLayout
         android:id="@+id/linearLayout7"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="45"
-        android:gravity="bottom">
+        android:layout_weight="35"
+        android:gravity="bottom"
+        android:weightSum="100">
+        <TextView
+            android:text="La informacion ingresada no es valida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewError"
+            android:layout_weight="60"
+            android:textColor="#e5412d"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:visibility="invisible" />
         <Button
             android:id="@+id/btnRegisterAll"
             android:text="Finalizar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="10"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="#ED9C28"
