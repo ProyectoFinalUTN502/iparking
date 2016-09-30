@@ -78,6 +78,13 @@ namespace iparking
                 mMap.AddMarker(mSelectedParkingMarkerOptions);
                 mMap.AddMarker(mUserMarkerOptions);
             }
+
+            // Disparo la Prueba Demo 2
+            // ==========================================
+            Intent intent = new Intent(this, typeof(DemoVehicleAvtivity));
+            this.StartActivity(intent);
+            
+
         }
 
         private void SetUpMap()
