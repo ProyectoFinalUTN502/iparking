@@ -16,7 +16,12 @@ namespace iparking.Entities
     {
         public int id { get; set; }
         public string name { get; set; }
-        public Client client { get; set; }
         public int vehicleTypeID { get; set; }
+        public int currentVehicle { get; set; }
+
+        public bool isCurrent()
+        {
+            return currentVehicle == 1;
+        }
     }
 }

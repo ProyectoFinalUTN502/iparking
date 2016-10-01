@@ -24,6 +24,8 @@ namespace iparking
 
         private ImageView mImageMore;
 
+        private FileManager fm;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -32,6 +34,8 @@ namespace iparking
             ActionBar.SetDisplayShowCustomEnabled(true);
             
             SetContentView(Resource.Layout.Main);
+
+            fm = new FileManager();
 
             mImageMore = FindViewById<ImageView>(Resource.Id.imageViewMore);
             mImageMore.Click += MImageMore_Click;
@@ -81,8 +85,8 @@ namespace iparking
 
             // Disparo la Prueba Demo 2
             // ==========================================
-            Intent intent = new Intent(this, typeof(DemoVehicleAvtivity));
-            this.StartActivity(intent);
+            //Intent intent = new Intent(this, typeof(DemoVehicleAvtivity));
+            //this.StartActivity(intent);
             
 
         }
@@ -117,6 +121,12 @@ namespace iparking
             DialogParkingSearch dialog = new DialogParkingSearch();
             dialog.Show(trans, "Dialog Parking Search");
             dialog.mGo += Dialog_mGo;
+
+        }
+
+        public void searchParkinglots()
+        {
+            string clientID = fm.GetValue("id");
 
         }
 
