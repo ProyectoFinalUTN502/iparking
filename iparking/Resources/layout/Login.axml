@@ -9,20 +9,17 @@
     android:weightSum="100">
     <TextView
         android:text="Bienvenido a iParking!"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="45dp"
         android:id="@+id/textViewTitle"
         android:textColor="#F9F9F9"
         android:gravity="center"
-        android:textSize="32sp"
-        android:layout_weight="10"
+        android:textSize="28sp"
         android:textStyle="bold" />
     <TextView
         android:text="Ingrese sus datos para Continuar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_height="20dp"
         android:id="@+id/textViewInstructions"
         android:textColor="#F9F9F9"
         android:gravity="center_horizontal"
@@ -78,4 +75,14 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:textStyle="bold" />
+    <TextView
+        android:text="** Nombre de Usuario o Contraseña Incorrecta **"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/textViewError"
+        android:gravity="center"
+        android:textColor="#e5412d"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
 </LinearLayout>

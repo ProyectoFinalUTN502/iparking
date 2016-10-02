@@ -83,6 +83,7 @@ namespace iparking
 
             } catch(Exception ex)
             {
+                Console.WriteLine(" ** ERROR ** : " + ex.Message);
                 Managment.ActivityManager.TakeMeTo(this, typeof(ErrorActivity), true);
             }
         }

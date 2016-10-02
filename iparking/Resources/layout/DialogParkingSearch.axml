@@ -3,98 +3,218 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F9F9"
+    android:background="@drawable/dialogstyle"
     android:minWidth="25px"
     android:minHeight="25px"
     android:weightSum="100">
-    <TextView
-        android:id="@+id/textViewName"
-        android:text="Medrano Parking"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:textColor="#505050"
-        android:textSize="36sp"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
-    <TextView
-        android:id="@+id/textViewAddress"
-        android:text="Medrano 950"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:textColor="#505050"
-        android:textSize="24sp"
-        android:gravity="left"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
-    <TextView
-        android:id="@+id/textViewTime"
-        android:text="08:00 a 22:00"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:textColor="#505050"
-        android:textSize="24sp"
-        android:gravity="left"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
-    <TextView
-        android:id="@+id/textViewPrice"
-        android:text="$50"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:textColor="#505050"
-        android:textSize="24sp"
-        android:gravity="left"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="60"
-        android:weightSum="100"
+        android:layout_height="100dp"
         android:id="@+id/linearLayout1">
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="50"
-            android:id="@+id/linearLayout2"
+            android:orientation="horizontal"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:gravity="center">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout6"
+            android:weightSum="100">
+            <ImageView
+                android:src="@drawable/parking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="30"
+                android:id="@+id/imageViewAddress"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="10dp" />
+            <TextView
+                android:id="@+id/textViewName"
+                android:text="Medrano Parking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="70"
+                android:textColor="#505050"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/linearLayout2">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout7"
+            android:weightSum="100">
+            <ImageView
+                android:src="@drawable/location"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:id="@+id/imageViewAddress"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:id="@+id/textViewAddress"
+                android:text="Medrano 950"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                android:textColor="#505050"
+                android:textSize="24sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/linearLayout3">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout8"
+            android:weightSum="100">
+            <ImageView
+                android:src="@drawable/history"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:id="@+id/imageViewTime"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:id="@+id/textViewTime"
+                android:text="08:00 a 22:00"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                android:textColor="#505050"
+                android:textSize="24sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/linearLayout4">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100"
+            android:id="@+id/linearLayout9">
+            <ImageView
+                android:src="@drawable/price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:id="@+id/imageViewTime"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:id="@+id/textViewPrice"
+                android:text="$50"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                android:textColor="#505050"
+                android:textSize="24sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/linearLayout5">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout10"
+            android:weightSum="100">
+            <ImageView
+                android:src="@drawable/available"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:id="@+id/imageViewPositions"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:id="@+id/textViewPositions"
+                android:text="100"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                android:textColor="#505050"
+                android:textSize="24sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/linearLayout11">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout12"
+            android:weightSum="100">
             <Button
                 android:text="Siguiente"
                 android:background="@drawable/DialogNextButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonNext"
-                android:gravity="center" />
-            <TextView
-                android:text="-34.5430092"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewLat"
-                android:visibility="invisible" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="50"
-            android:id="@+id/linearLayout3"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:gravity="center">
+                android:layout_weight="50"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="#F9F9F9" />
             <Button
                 android:text="Ir"
                 android:background="@drawable/DialogButtonStyle"
@@ -102,15 +222,13 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonGo"
                 android:gravity="center"
+                android:layout_weight="50"
                 android:textSize="24sp"
-                android:textColor="#F9F9F9" />
-            <TextView
-                android:text="-58.5664819"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewLng"
-                android:visibility="invisible" />
+                android:textColor="#F9F9F9"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
