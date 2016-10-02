@@ -14,27 +14,34 @@ using iparking.Entities;
 using iparking.Managment;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Android.Locations;
+using System.Linq;
 
 namespace iparking
 {
     [Activity(Label = "iParking",Theme = "@style/CustomActionBarTheme", NoHistory = true, LaunchMode = Android.Content.PM.LaunchMode.SingleTask)]
-    public class MainActivity : Activity, IOnMapReadyCallback
+    public class MainActivity : Activity, IOnMapReadyCallback,  ILocationListener
     {
-        FragmentTransaction trans;
-        DialogParkingSearch dialog;
+        LocationManager locationManager;
+        Location currentLocation;
+        string locationProvider;
+
+        private FragmentTransaction trans;
+        private DialogParkingSearch dialog;
 
         private List<Parkinglot> mParkinglots;
         private System.Net.WebClient mClient;
-        private Parkinglot parkinglot;
         private GoogleMap mMap;
-        private MarkerOptions mSelectedParkingMarkerOptions;
-        private MarkerOptions mUserMarkerOptions;
+
+        private MarkerOptions mMarkerParking;
+        private MarkerOptions mMarkerUser;
 
         private ImageView mImageMore;
 
         private FileManager fm;
 
         private int mPosition;
+
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -44,6 +51,8 @@ namespace iparking
             ActionBar.SetDisplayShowCustomEnabled(true);
             
             SetContentView(Resource.Layout.Main);
+
+            locationProvider = string.Empty;
 
             fm = new FileManager();
             mParkinglots = new List<Parkinglot>();
@@ -57,12 +66,89 @@ namespace iparking
 
         private void MImageMore_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(MoreOptionsActivity));
-            this.StartActivity(intent);
-            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+            Managment.ActivityManager.TakeMeTo(this, typeof(MoreOptionsActivity), false);
+        }
 
-            //Intent intent = new Intent(this, typeof(NavigationActivity));
-            //this.StartActivity(intent);
+        public void InitializeLocationManager()
+        {
+            locationManager = (LocationManager)GetSystemService(LocationService);
+
+            // define its Criteria
+            Criteria criteriaForLocationService = new Criteria
+            {
+                Accuracy = Accuracy.NoRequirement,
+                PowerRequirement = Power.NoRequirement
+            };
+
+            // find a location provider (GPS, wi-fi, etc.)
+            IList<string> acceptableLocationProviders = locationManager.GetProviders(criteriaForLocationService, true);
+
+
+
+            // if we have any, use the first one
+            locationProvider = string.Empty;
+            if (acceptableLocationProviders.Any())
+            {
+                locationProvider = acceptableLocationProviders.First();
+            }
+        }
+
+        protected override void OnResume()
+        {
+            // Pide la posicion cuando la actividad paso a Primer Plano
+            base.OnResume();
+            if (locationProvider != string.Empty)
+            {
+                locationManager.RequestLocationUpdates(locationProvider, 0, 0, this);
+            }
+        }
+
+        protected override void OnPause()
+        {
+            // Elimina las actualizaciones sin la aplicacion paso a Segundo Plano
+            // Gasta menos bateria
+            try
+            {
+                base.OnPause();
+                locationManager.RemoveUpdates(this);
+            } catch(Exception ex)
+            {
+                Console.WriteLine("** Error de Posicion ( OnPause ) ** : " + ex.Message);
+            }
+        }
+
+        public void OnLocationChanged(Location location)
+        {
+            try
+            {
+                currentLocation = location;
+                if (currentLocation != null)
+                {
+                    // Guardo la posicion obtenida para tener siempre una ultima posicion a la que recurrir
+                    FileManager fm = new FileManager();
+                    fm.SetValue("lat", currentLocation.Latitude.ToString());
+                    fm.SetValue("lng", currentLocation.Longitude.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("** Error de Posicion ** : " + ex.Message);
+                //textLocation.Text = "Error: " + ex.Message;
+            }
+        }
+
+        public void OnProviderDisabled(string provider)
+        {
+
+        }
+
+        public void OnProviderEnabled(string provider)
+        {
+
+        }
+
+        public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
+        {
 
         }
 
@@ -77,14 +163,9 @@ namespace iparking
 
         public void OnMapReady(GoogleMap googleMap)
         {
-
             mMap = googleMap;
 
-            // Aca tengo que tomar la Lat y Long del Dispositivo y cargar la LatLng 
-            // Si no tiene (porque esta tardando en tomar, tengo que tener una por defecto)
-
-
-            LatLng latlng = new LatLng(ConfigManager.DefaultLatMap, ConfigManager.DefaultLongMap);
+            LatLng latlng = GetClientLocation();
             CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(latlng, ConfigManager.DefaultZoomMap); 
             mMap.MoveCamera(camera);
 
@@ -118,16 +199,27 @@ namespace iparking
                     string json = Encoding.UTF8.GetString(e.Result);
                     mParkinglots = JsonConvert.DeserializeObject<List<Parkinglot>>(json);
 
+                    if (mParkinglots.Count == 0)
+                    {
+                        trans = FragmentManager.BeginTransaction();
+                        dialog = new DialogParkingSearch();
+                        dialog.Show(trans, "Dialog Parking Search");
+
+                    } else
+                    {
+                        //Levanto el Dialog aca, asi me aseguro que siempre haya mapa donde mostrar los marcadores
+                        trans = FragmentManager.BeginTransaction();
+                        dialog = new DialogParkingSearch(mParkinglots[mPosition], mPosition);
+                        dialog.Show(trans, "Dialog Parking Search");
+                        dialog.mGo += Dialog_mGo;
+                        dialog.mNext += Dialog_mNext;
+
+                    }
                 
-                    //Levanto el Dialog aca, asi me aseguro que siempre haya mapa donde mostrar los marcadores
-                    trans = FragmentManager.BeginTransaction();
-                    dialog = new DialogParkingSearch(mParkinglots[mPosition], mPosition);
-                    dialog.Show(trans, "Dialog Parking Search");
-                    dialog.mGo += Dialog_mGo;
-                    dialog.mNext += Dialog_mNext;
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine("** Error de Carga ( Establecimientos) ** : " + ex.Message);
                     Managment.ActivityManager.TakeMeTo(this, typeof(ErrorActivity), true);
                 }
             });
@@ -136,32 +228,21 @@ namespace iparking
 
         private void Dialog_mGo(object sender, OnGoEventArgs e)
         {
-            //parkinglot = e.Parkinglot;
+            
+            int index = e.Position;
 
-            //Double lat = Convert.ToDouble(parkinglot.lat);
-            //Double lng = Convert.ToDouble(parkinglot.lng);
+            Parkinglot parkinglot = mParkinglots[index];
+            LatLng parkingPosition = new LatLng(parkinglot.lat, parkinglot.lng);
+            LatLng clientPosition = GetClientLocation();
 
-            //LatLng position = new LatLng(lat, lng);
-
-            //mSelectedParkingMarkerOptions = new MarkerOptions();
-            //mSelectedParkingMarkerOptions.SetPosition(position);
-            //mSelectedParkingMarkerOptions.SetTitle(parkinglot.name);
-            //mSelectedParkingMarkerOptions.SetSnippet(parkinglot.time + " | " + parkinglot.price);
-            //mSelectedParkingMarkerOptions.SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueRed));
-
-            //LatLng userPosition = new LatLng(ConfigManager.DefaultLatMap, ConfigManager.DefaultLongMap);
-
-            //mUserMarkerOptions = new MarkerOptions();
-            //mUserMarkerOptions.SetPosition(userPosition);
-            //mUserMarkerOptions.SetTitle("Usted esta aqui!");
-            //mUserMarkerOptions.SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueGreen));
-
-
-            //if (mMap != null)
-            //{
-            //    mMap.AddMarker(mSelectedParkingMarkerOptions);
-            //    mMap.AddMarker(mUserMarkerOptions);
-            //}
+            mMarkerParking = MarkerManager.CreateMarker(parkingPosition, parkinglot.name, parkinglot.address, BitmapDescriptorFactory.HueRed);
+            mMarkerUser = MarkerManager.CreateMarker(clientPosition, "Usted esta aqui!", "", BitmapDescriptorFactory.HueGreen);
+           
+            if (mMap != null)
+            {
+                mMap.AddMarker(mMarkerParking);
+                mMap.AddMarker(mMarkerUser);
+            }
 
             // Click en Ir...hago el camino hacia el Establecimiento
         }
@@ -178,6 +259,38 @@ namespace iparking
 
             parkinglot = mParkinglots[nextPosition];
             dialog.SetParkinglot(parkinglot, nextPosition);
+        }
+
+        private LatLng GetClientLocation()
+        {
+            LatLng clientLocation;
+
+            if (locationProvider != string.Empty)
+            {
+                // Encontro una posicion con el GPS
+                clientLocation = new LatLng(currentLocation.Latitude, currentLocation.Longitude);
+            }
+            else
+            {
+                // Tengo que usar la posicion anterior
+                FileManager fm = new FileManager();
+
+                string fileLat = fm.GetValue("lat");
+                string fileLng = fm.GetValue("lng");
+
+                if (fileLat == string.Empty || fileLng == string.Empty)
+                {
+                    // No hay ni posicion con GPS, ni estan grabadas en el archivo
+                    // uso valores por defecto
+                    clientLocation = new LatLng(ConfigManager.DefaultLatMap, ConfigManager.DefaultLongMap);
+                }
+                else
+                {
+                    clientLocation = new LatLng(Convert.ToDouble(fileLat), Convert.ToDouble(fileLng));
+                }
+            }
+
+            return clientLocation;
         }
     }
 }

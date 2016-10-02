@@ -27,14 +27,26 @@ namespace iparking.Managment
 
         private Button mButtonGo;
         private Button mButtonNext;
+        private Button mButtonErrorClose;
+
+        private bool mLoadErrorView;
 
         public event EventHandler<OnGoEventArgs> mGo;
         public event EventHandler<OnNextEventArgs> mNext;
+
+
+        public DialogParkingSearch()
+        {
+            mParkinglot = null;
+            mPosition = 0;
+            mLoadErrorView = true;
+        }
 
         public DialogParkingSearch(Parkinglot parkinglot, int position)
         {
             mParkinglot = parkinglot;
             mPosition = position;
+            mLoadErrorView = false;
         }
 
         public void SetParkinglot(Parkinglot parkinglot, int position)
@@ -66,24 +78,41 @@ namespace iparking.Managment
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
+            View view;
 
-            var view = inflater.Inflate(Resource.Layout.DialogParkingSearch, container, false);
+            if (mLoadErrorView)
+            {
+                view = inflater.Inflate(Resource.Layout.DialogParkingSearchError, container, false);
+                mButtonErrorClose = view.FindViewById<Button>(Resource.Id.buttonError);
+                mButtonErrorClose.Click += MButtonErrorClose_Click;
+            } 
+            else
+            {
+                view = inflater.Inflate(Resource.Layout.DialogParkingSearch, container, false);
 
-            mTextName = view.FindViewById<TextView>(Resource.Id.textViewName);
-            mTextAddress = view.FindViewById<TextView>(Resource.Id.textViewAddress);
-            mTextTime = view.FindViewById<TextView>(Resource.Id.textViewTime);
-            mTextPrice = view.FindViewById<TextView>(Resource.Id.textViewPrice);
-            mTextPositions = view.FindViewById<TextView>(Resource.Id.textViewPositions);
+                mTextName = view.FindViewById<TextView>(Resource.Id.textViewName);
+                mTextAddress = view.FindViewById<TextView>(Resource.Id.textViewAddress);
+                mTextTime = view.FindViewById<TextView>(Resource.Id.textViewTime);
+                mTextPrice = view.FindViewById<TextView>(Resource.Id.textViewPrice);
+                mTextPositions = view.FindViewById<TextView>(Resource.Id.textViewPositions);
            
-            loadParkinglot();
+                loadParkinglot();
 
-            mButtonGo = view.FindViewById<Button>(Resource.Id.buttonGo);
-            mButtonNext = view.FindViewById<Button>(Resource.Id.buttonNext);
+                mButtonGo = view.FindViewById<Button>(Resource.Id.buttonGo);
+                mButtonNext = view.FindViewById<Button>(Resource.Id.buttonNext);
 
-            mButtonGo.Click += MButtonGo_Click;
-            mButtonNext.Click += MButtonNext_Click;
+                mButtonGo.Click += MButtonGo_Click;
+                mButtonNext.Click += MButtonNext_Click;
+
+            }
+
 
             return view;
+        }
+
+        private void MButtonErrorClose_Click(object sender, EventArgs e)
+        {
+            this.Dismiss();
         }
 
         private void MButtonNext_Click(object sender, EventArgs e)
@@ -95,20 +124,10 @@ namespace iparking.Managment
 
         private void MButtonGo_Click(object sender, EventArgs e)
         {
-            //Parkinglot parking = new Parkinglot();
-            //parking.name = mTextName.Text.Trim();
-            //parking.address = mTextAddress.Text.Trim();
-            //parking.time = mTextTime.Text.Trim();
-            //parking.price = mTextPrice.Text.Trim();
-            //parking.lat = mTextLat.Text.Trim();
-            //parking.lng = mTextLong.Text.Trim();
-
             // Invoco al evento de dar click en el boton "Go"
             mGo.Invoke(this, new OnGoEventArgs(mPosition));
             // Cierro el Dialog
             this.Dismiss();
-
-               
         }
 
         public override void OnActivityCreated(Bundle savedInstanceState)
@@ -123,8 +142,6 @@ namespace iparking.Managment
 
     public class OnGoEventArgs : EventArgs
     {
-        //private Parkinglot mParkinglot;
-
         private int mPosition;
 
         public int Position
@@ -132,20 +149,7 @@ namespace iparking.Managment
             get { return mPosition; }
             set { mPosition = value; }
         }
-
-        //public Parkinglot Parkinglot
-        //{
-        //    get
-        //    {
-        //        return mParkinglot;
-        //    }
-
-        //    set
-        //    {
-        //        mParkinglot = value;
-        //    }
-        //}
-
+        
         // Constructor
         public OnGoEventArgs(int p) : base()
         {
