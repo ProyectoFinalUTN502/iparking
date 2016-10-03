@@ -66,8 +66,8 @@ namespace iparking
         {
             int range = mSeekBarRange.Progress + 1;
             string price = mTextPrice.Text.Trim();
-            bool is24 = mIs24Yes.Checked ? true : false;
-            bool isCovered = mIsCoveredYes.Checked ? true : false;
+            int is24 = mIs24Yes.Checked ? 1 : 0;
+            int isCovered = mIsCoveredYes.Checked ? 1 : 0;
 
             clientProfile = new Profile();
             clientProfile.range = range;
@@ -108,8 +108,8 @@ namespace iparking
             NameValueCollection param = new NameValueCollection();
             param.Add("range", clientProfile.range.ToString());
             param.Add("maxPrice", clientProfile.maxPrice.ToString());
-            param.Add("is24", clientProfile.GetIs24());
-            param.Add("isCovered", clientProfile.GetIsCovered());
+            param.Add("is24", clientProfile.is24.ToString());
+            param.Add("isCovered", clientProfile.isCovered.ToString());
             param.Add("client_id", id);
 
             wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted; ;

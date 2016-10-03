@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Gms.Maps.Model;
+using Android.Graphics;
 
 namespace iparking.Managment
 {
@@ -22,13 +23,16 @@ namespace iparking.Managment
             mo.SetTitle(title);
             mo.SetSnippet(snippet);
             mo.SetIcon(BitmapDescriptorFactory.DefaultMarker(color));
-
+            
             return mo;
-            //mSelectedParkingMarkerOptions = new MarkerOptions();
-            //mSelectedParkingMarkerOptions.SetPosition(position);
-            //mSelectedParkingMarkerOptions.SetTitle(parkinglot.name);
-            //mSelectedParkingMarkerOptions.SetSnippet(parkinglot.time + " | " + parkinglot.price);
-            //mSelectedParkingMarkerOptions.SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueRed));
+        }
+
+        public static MarkerOptions CreateUserPosition(LatLng position)
+        {
+            MarkerOptions mo = new MarkerOptions();
+            mo.SetPosition(position);
+            mo.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.circle));
+            return mo;
         }
 
     }

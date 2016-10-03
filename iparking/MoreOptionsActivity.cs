@@ -66,17 +66,12 @@ namespace iparking
 
         private void MEditProfile_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(EditProfileActivity));
-            this.StartActivity(intent);
-            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
-            this.Finish();
+            Managment.ActivityManager.TakeMeTo(this, typeof(EditProfileActivity), false);
         }
 
         private void MBack_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(MainActivity));
-            this.StartActivity(intent);
-            this.Finish();
+            Managment.ActivityManager.TakeMeTo(this, typeof(MainActivity), true);
         }
     }
 }

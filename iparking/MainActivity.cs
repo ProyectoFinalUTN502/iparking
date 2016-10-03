@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Android.Locations;
 using System.Linq;
+using Android.Graphics;
 
 namespace iparking
 {
@@ -128,6 +129,10 @@ namespace iparking
                     FileManager fm = new FileManager();
                     fm.SetValue("lat", currentLocation.Latitude.ToString());
                     fm.SetValue("lng", currentLocation.Longitude.ToString());
+
+                    // Actualizo la posicion del Cliente en el Mapa
+                    UpdateClientPosition(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
+                    
                 }
             }
             catch (Exception ex)
@@ -228,7 +233,6 @@ namespace iparking
 
         private void Dialog_mGo(object sender, OnGoEventArgs e)
         {
-            
             int index = e.Position;
 
             Parkinglot parkinglot = mParkinglots[index];
@@ -236,15 +240,28 @@ namespace iparking
             LatLng clientPosition = GetClientLocation();
 
             mMarkerParking = MarkerManager.CreateMarker(parkingPosition, parkinglot.name, parkinglot.address, BitmapDescriptorFactory.HueRed);
-            mMarkerUser = MarkerManager.CreateMarker(clientPosition, "Usted esta aqui!", "", BitmapDescriptorFactory.HueGreen);
-           
+            mMarkerUser = MarkerManager.CreateUserPosition(clientPosition);
+
             if (mMap != null)
             {
                 mMap.AddMarker(mMarkerParking);
                 mMap.AddMarker(mMarkerUser);
+
+                mMap.MarkerClick += MMap_MarkerClick;
             }
 
             // Click en Ir...hago el camino hacia el Establecimiento
+        }
+
+        private void MMap_MarkerClick(object sender, MarkerClickEventArgs e)
+        {
+            Parkinglot p = mParkinglots.Find(x => x.name == e.Marker.Title);
+
+            if (p == null) { return; }
+
+            // El usuario llego al Establecimiento, ir a Navegacion Interna
+            e.Marker.ShowInfoWindow();
+            Console.WriteLine(" El Usuario llego a " + p.name + " (" + p.address + ")");
         }
 
         private void Dialog_mNext(object sender, OnNextEventArgs e)
@@ -291,6 +308,19 @@ namespace iparking
             }
 
             return clientLocation;
+        }
+
+        private void UpdateClientPosition(LatLng clientPosition)
+        {
+            bool control = mMap != null && mMarkerUser != null && mMarkerParking != null;
+            if (control)
+            {
+                mMarkerUser.SetPosition(clientPosition);
+
+                mMap.Clear();
+                mMap.AddMarker(mMarkerParking);
+                mMap.AddMarker(mMarkerUser);
+            }
         }
     }
 }

@@ -17,18 +17,18 @@ namespace iparking.Entities
         public int id { get; set; }
         public int range { get; set; }
         public double maxPrice { get; set; }
-        public bool is24 { get; set; }
-        public bool isCovered { get; set; }
+        public int is24 { get; set; }
+        public int isCovered { get; set; }
         public Client client { get; set; }
 
-        public string GetIs24()
+        public bool GetIs24()
         {
-            return is24 ? "1" : "0";
+            return is24 == 1;
         }
 
-        public string GetIsCovered()
+        public bool GetIsCovered()
         {
-            return isCovered ? "1" : "0";
+            return isCovered == 1;
         }
     }
 }
