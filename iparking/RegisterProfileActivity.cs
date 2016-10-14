@@ -13,6 +13,7 @@ using iparking.Entities;
 using iparking.Controllers;
 using System.Collections.Specialized;
 using Newtonsoft.Json;
+using iparking.Managment;
 
 namespace iparking
 {
@@ -33,6 +34,7 @@ namespace iparking
 
         Button mButton;
 
+        FileManager fm;
         ISharedPreferences pref;
         ISharedPreferencesEditor edit;
 
@@ -59,6 +61,8 @@ namespace iparking
 
             mButton.Click += MButton_Click;
             mSeekBarRange.ProgressChanged += MSeekBarRange_ProgressChanged;
+
+            fm = new FileManager();
 
         }
 
@@ -97,46 +101,60 @@ namespace iparking
 
         public void createProfile()
         {
-            System.Net.WebClient wclient = new System.Net.WebClient();
-            Uri uri = new Uri(ConfigManager.WebService + "/newProfile.php");
+            try
+            {
+                System.Net.WebClient wclient = new System.Net.WebClient();
+                Uri uri = new Uri(ConfigManager.WebService + "/newProfile.php");
 
-            pref = Application.Context.GetSharedPreferences(ConfigManager.SharedFile, FileCreationMode.Private);
-            edit = pref.Edit();
+                pref = Application.Context.GetSharedPreferences(ConfigManager.SharedFile, FileCreationMode.Private);
+                edit = pref.Edit();
 
-            string id = pref.GetString("id", String.Empty);
+                string id = pref.GetString("id", String.Empty);
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("range", clientProfile.range.ToString());
-            param.Add("maxPrice", clientProfile.maxPrice.ToString());
-            param.Add("is24", clientProfile.is24.ToString());
-            param.Add("isCovered", clientProfile.isCovered.ToString());
-            param.Add("client_id", id);
+                NameValueCollection param = new NameValueCollection();
+                param.Add("range", clientProfile.range.ToString());
+                param.Add("maxPrice", clientProfile.maxPrice.ToString());
+                param.Add("is24", clientProfile.is24.ToString());
+                param.Add("isCovered", clientProfile.isCovered.ToString());
+                param.Add("client_id", id);
 
-            wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted; ;
-            wclient.UploadValuesAsync(uri, param);
+                wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted; ;
+                wclient.UploadValuesAsync(uri, param);
+            }
+            catch (Exception ex)
+            {
+                Managment.ActivityManager.ShowError(this, new Error("101", ex.Message));
+            }
         }
 
         private void Wclient_UploadValuesCompleted(object sender, System.Net.UploadValuesCompletedEventArgs e)
         {
-            string json = Encoding.UTF8.GetString(e.Result);
-            OperationResult or = JsonConvert.DeserializeObject<OperationResult>(json);
-            
-            if (or.error)
+            try
             {
-                // Ha ocurrido un error!
-                RunOnUiThread(() =>
+                string json = Encoding.UTF8.GetString(e.Result);
+                OperationResult or = JsonConvert.DeserializeObject<OperationResult>(json);
+
+
+                if (or.error)
                 {
-                    mTextError.Text = "Ah ocurrido un error al realizar el registro\nPor favor, intente nuevamente mas tarde";
-                    mTextError.Visibility = ViewStates.Visible;
-                });
-            }
-            else
+                    // Ha ocurrido un error!
+                    RunOnUiThread(() =>
+                    {
+                        mTextError.Text = "Ah ocurrido un error al realizar el registro\nPor favor, intente nuevamente mas tarde";
+                        mTextError.Visibility = ViewStates.Visible;
+                    });
+                }
+                else
+                {
+                    // Cargo la vista de Registro de Vehiculo
+                    Managment.ActivityManager.TakeMeTo(this, typeof(RegisterVehicleActivity), false);
+                }
+
+            } catch (Exception ex)
             {
-                // Cargo la vista de Registro de Vehiculo
-                Intent intent = new Intent(this, typeof(RegisterVehicleActivity));
-                this.StartActivity(intent);
-                this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+                Managment.ActivityManager.ShowError(this, new Error("100", ex.Message));
             }
+
         }
     }
 }

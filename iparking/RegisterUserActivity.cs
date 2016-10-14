@@ -33,11 +33,15 @@ namespace iparking
 
         Client client;
 
+        FileManager fm;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Register);
+
+            fm = new FileManager();
 
             mUserEmail = FindViewById<EditText>(Resource.Id.txtUserEmail);
             mUserPassword = FindViewById<EditText>(Resource.Id.txtUserPassword);
@@ -78,51 +82,60 @@ namespace iparking
 
         public void RegisterClient()
         {
-            System.Net.WebClient wclient = new System.Net.WebClient();
-            Uri uri = new Uri(ConfigManager.WebService + "/newClient.php");
-            NameValueCollection param = new NameValueCollection();
+            try
+            {
+                System.Net.WebClient wclient = new System.Net.WebClient();
+                Uri uri = new Uri(ConfigManager.WebService + "/newClient.php");
+                NameValueCollection param = new NameValueCollection();
 
-            param.Add("email", client.email);
-            param.Add("password", client.HashPassword());
-            param.Add("name", client.name);
-            param.Add("lastName", client.lastName);
-            param.Add("macAddress", DeviceManager.GetMacAdress(this));
+                param.Add("email", client.email);
+                param.Add("password", client.HashPassword());
+                param.Add("name", client.name);
+                param.Add("lastName", client.lastName);
+                param.Add("macAddress", DeviceManager.GetMacAdress(this));
 
-            wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted;
-            wclient.UploadValuesAsync(uri, param);
+                wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted;
+                wclient.UploadValuesAsync(uri, param);
+            } 
+            catch (Exception ex)
+            {
+                Managment.ActivityManager.ShowError(this, new Error("100", ex.Message));
+            }
         }
 
         private void Wclient_UploadValuesCompleted(object sender, UploadValuesCompletedEventArgs e)
         {
-            string json = Encoding.UTF8.GetString(e.Result);
-            OperationResult or = JsonConvert.DeserializeObject<OperationResult>(json);
-
-            // Oculto la Progressbar
-            RunOnUiThread(() => { mProgress.Visibility = ViewStates.Invisible;});
-
-            if (or.error)
+            try
             {
-                // Ha ocurrido un error!
-                RunOnUiThread(() =>
+                string json = Encoding.UTF8.GetString(e.Result);
+                OperationResult or = JsonConvert.DeserializeObject<OperationResult>(json);
+
+                // Oculto la Progressbar
+                RunOnUiThread(() => { mProgress.Visibility = ViewStates.Invisible;});
+
+                if (or.error)
                 {
-                    mTextError.Text = "Ah ocurrido un error al realizar el registro\nPor favor, intente nuevamente mas tarde";
-                    mTextError.Visibility = ViewStates.Visible;
-                });
-            }
-            else
-            {
-                // Guardo el Id de mi nuevo Cliente
-                ISharedPreferences pref = Application.Context.GetSharedPreferences(ConfigManager.SharedFile, FileCreationMode.Private);
-                ISharedPreferencesEditor edit = pref.Edit();
-                edit.PutString("id", or.data.ToString());
-                edit.PutString("email", client.email);
-                edit.PutString("password", client.HashPassword());
-                edit.Apply();
+                    // Ha ocurrido un error!
+                    RunOnUiThread(() =>
+                    {
+                        mTextError.Text = "Ah ocurrido un error al realizar el registro\nPor favor, intente nuevamente mas tarde";
+                        mTextError.Visibility = ViewStates.Visible;
+                    });
+                }
+                else
+                {
+                    // Guardo el Id de mi nuevo Cliente
+                    fm.SetValue("id", or.data.ToString());
+                    fm.SetValue("email", client.email);
+                    fm.SetValue("password", client.HashPassword());
 
-                // Cargo la vista de Registro de Perfil
-                Intent intent = new Intent(this, typeof(RegisterProfileActivity));
-                this.StartActivity(intent);
-                this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+                    // Cargo la vista de Registro de Perfil
+                    Managment.ActivityManager.TakeMeTo(this, typeof(RegisterProfileActivity), false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Managment.ActivityManager.ShowError(this, new Error("100", ex.Message));
             }
 
         }

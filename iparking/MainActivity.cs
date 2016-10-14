@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using Android.Locations;
 using System.Linq;
 using Android.Graphics;
+using iparking.Controllers;
 
 namespace iparking
 {
@@ -248,9 +249,11 @@ namespace iparking
                 mMap.AddMarker(mMarkerUser);
 
                 mMap.MarkerClick += MMap_MarkerClick;
+
+                RouteToDestination(clientPosition, parkingPosition);
             }
 
-            // Click en Ir...hago el camino hacia el Establecimiento
+           
         }
 
         private void MMap_MarkerClick(object sender, MarkerClickEventArgs e)
@@ -321,6 +324,30 @@ namespace iparking
                 mMap.AddMarker(mMarkerParking);
                 mMap.AddMarker(mMarkerUser);
             }
+        }
+
+        public void RouteToDestination(LatLng client, LatLng parkinglot)
+        {
+            string origin = client.Latitude.ToString() + "," + client.Longitude.ToString();
+            string destination = parkinglot.Latitude.ToString() + "," + parkinglot.Longitude.ToString();
+
+            System.Net.WebClient localClient = new System.Net.WebClient();
+            Uri url = new Uri(ConfigManager.GoogleService + "origin=" + origin + "&destination=" + destination);
+
+            localClient.DownloadDataAsync(url);
+            localClient.DownloadDataCompleted += LocalClient_DownloadDataCompleted;
+        }
+
+        private void LocalClient_DownloadDataCompleted(object sender, System.Net.DownloadDataCompletedEventArgs e)
+        {
+            string json = Encoding.UTF8.GetString(e.Result);
+            var googleDirection = JsonConvert.DeserializeObject<GoogleDirection>(json);
+            PolylineOptions po = DirectionController.ResolveRoute(googleDirection);
+
+            RunOnUiThread(() =>
+                mMap.AddPolyline(po)
+            );
+
         }
     }
 }

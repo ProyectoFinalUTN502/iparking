@@ -9,6 +9,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using iparking.Entities;
+using Newtonsoft.Json;
 
 namespace iparking.Managment
 {
@@ -24,6 +26,15 @@ namespace iparking.Managment
             {
                 activity.Finish();
             }
+        }
+
+        public static void ShowError(Activity activity, Error error)
+        {
+            Intent intent = new Intent(activity, typeof(ErrorActivity));
+            intent.PutExtra("Error", JsonConvert.SerializeObject(error));
+            activity.StartActivity(intent);
+            activity.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+            activity.Finish();
         }
 
 
