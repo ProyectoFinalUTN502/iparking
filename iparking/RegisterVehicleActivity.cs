@@ -20,6 +20,9 @@ namespace iparking
     [Activity(Label = "RegisterVehicleActivity", Theme = "@style/MyTheme.Base")]
     public class RegisterVehicleActivity : Activity
     {
+        public const string errCode = "103";
+        public const string errMsg = "Error al intentar Registrar un Vehiculo";
+
         RadioButton mRadioCar;
         RadioButton mRadioSUV;
         RadioButton mRadioVAN;
@@ -84,39 +87,50 @@ namespace iparking
 
         public void createVehicle()
         {
-            System.Net.WebClient wclient = new System.Net.WebClient();
-            Uri uri = new Uri(ConfigManager.WebService + "/newVehicle.php");
-            NameValueCollection param = new NameValueCollection();
+            try
+            {
+                System.Net.WebClient wclient = new System.Net.WebClient();
+                Uri uri = new Uri(ConfigManager.WebService + "/newVehicle.php");
+                NameValueCollection param = new NameValueCollection();
 
-            param.Add("name", vehicle.name);
-            param.Add("client_id", fm.GetValue("id"));
-            param.Add("vehicle_type_id", vehicle.vehicleTypeID.ToString());
+                param.Add("name", vehicle.name);
+                param.Add("client_id", fm.GetValue("id"));
+                param.Add("vehicle_type_id", vehicle.vehicleTypeID.ToString());
 
 
-            wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted1;
-            wclient.UploadValuesAsync(uri, param);
+                wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted1;
+                wclient.UploadValuesAsync(uri, param);
+            }
+            catch (Exception ex)
+            {
+                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
+            }
         }
 
         private void Wclient_UploadValuesCompleted1(object sender, System.Net.UploadValuesCompletedEventArgs e)
         {
-            string json = Encoding.UTF8.GetString(e.Result);
-            OperationResult or = JsonConvert.DeserializeObject<OperationResult>(json);
+            try
+            {
+                string json = Encoding.UTF8.GetString(e.Result);
+                OperationResult or = JsonConvert.DeserializeObject<OperationResult>(json);
             
-            if (or.error)
-            {
-                // Ha ocurrido un error!
-                RunOnUiThread(() =>
+                if (or.error)
                 {
-                    mTextError.Text = "Ah ocurrido un error al realizar el registro\nPor favor, intente nuevamente mas tarde";
-                    mTextError.Visibility = ViewStates.Visible;
-                });
+                    // Ha ocurrido un error!
+                    RunOnUiThread(() =>
+                    {
+                        mTextError.Text = "Ah ocurrido un error al realizar el registro\nPor favor, intente nuevamente mas tarde";
+                        mTextError.Visibility = ViewStates.Visible;
+                    });
+                }
+                else
+                {
+                    Managment.ActivityManager.TakeMeTo(this, typeof(MainActivity), true);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Intent intent = new Intent(this, typeof(MainActivity));
-                this.StartActivity(intent);
-                this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
-                this.Finish();
+                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
             }
 
         }

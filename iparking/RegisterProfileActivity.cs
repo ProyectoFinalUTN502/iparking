@@ -20,6 +20,9 @@ namespace iparking
     [Activity(Label = "RegisterProfileActivity", Theme = "@style/MyTheme.Base")]
     public class RegisterProfileActivity : Activity
     {
+        public const string errCode = "101";
+        public const string errMsg = "Error al intentar Registrar el Perfil de Búsqueda";
+
         Profile clientProfile;
         SeekBar mSeekBarRange;
         TextView mTextViewRange;
@@ -123,7 +126,7 @@ namespace iparking
             }
             catch (Exception ex)
             {
-                Managment.ActivityManager.ShowError(this, new Error("101", ex.Message));
+                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
             }
         }
 
@@ -152,7 +155,7 @@ namespace iparking
 
             } catch (Exception ex)
             {
-                Managment.ActivityManager.ShowError(this, new Error("100", ex.Message));
+                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
             }
 
         }
