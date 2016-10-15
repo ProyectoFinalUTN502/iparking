@@ -42,6 +42,7 @@ namespace iparking
         private MarkerOptions mMarkerUser;
 
         private ImageView mImageMore;
+        private ImageView mImageReSearch;
 
         private FileManager fm;
 
@@ -73,7 +74,17 @@ namespace iparking
             mImageMore = FindViewById<ImageView>(Resource.Id.imageViewMore);
             mImageMore.Click += MImageMore_Click;
 
+            mImageReSearch = FindViewById<ImageView>(Resource.Id.imageViewReSearch);
+            mImageReSearch.Click += MImageReSearch_Click;
+
             SetUpMap();
+        }
+
+        private void MImageReSearch_Click(object sender, EventArgs e)
+        {
+            mMap.Clear();
+            mParkinglots.Clear();
+            searchParkinglots();
         }
 
         private void MImageMore_Click(object sender, EventArgs e)
@@ -248,7 +259,7 @@ namespace iparking
             LatLng parkingPosition = new LatLng(parkinglot.lat, parkinglot.lng);
             LatLng clientPosition = GetClientLocation();
 
-            mMarkerParking = MarkerManager.CreateMarker(parkingPosition, parkinglot.name, parkinglot.address, BitmapDescriptorFactory.HueRed);
+            mMarkerParking = MarkerManager.CreateMarker(parkingPosition, parkinglot.name, parkinglot.id + ":" + parkinglot.address, BitmapDescriptorFactory.HueRed);
             mMarkerUser = MarkerManager.CreateUserPosition(clientPosition);
 
             if (mMap != null)
@@ -305,8 +316,24 @@ namespace iparking
 
         public View GetInfoWindow(Marker marker)
         {
+            // En el Snippet del marcador viene el ID del Parkinlot
+            // Primero separo ID de Address
+
+            TextView txtName;
+            TextView txtAddress;
+
+            string data = marker.Snippet;
+            string[] exploded = data.Split(':');
+            string id = exploded[0];
+            string address = exploded[1];
+
             View view = LayoutInflater.Inflate(Resource.Layout.InfoWindowsMain, null, false);
-            view.FindViewById<TextView>(Resource.Id.textViewName).Text = "Prueba de Cesar";
+            txtName = view.FindViewById<TextView>(Resource.Id.textViewName);
+            txtAddress = view.FindViewById<TextView>(Resource.Id.textViewAddress);
+
+            txtName.Text = marker.Title;
+            txtAddress.Text = address;
+
             return view;
         }
 
@@ -375,7 +402,8 @@ namespace iparking
             }
             catch (Exception ex)
             {
-                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
+                Console.WriteLine("** Error ** : No se pudo conectar a Google Route /n " + ex.Message);
+                //Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
             }
         }
 
@@ -393,7 +421,8 @@ namespace iparking
             }
             catch (Exception ex)
             {
-                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
+                Console.WriteLine("** Error ** : El servidor Google Route no devolvio valores correctos /n " + ex.Message);
+                //Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
             }
 
         }

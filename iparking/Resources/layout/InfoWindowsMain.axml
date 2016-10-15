@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/infowindowstyle"
     android:minWidth="700px">
     <LinearLayout
-        android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
+        android:id="@+id/linearLayout2"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/linearLayout1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:weightSum="100">
         <LinearLayout
-            android:orientation="horizontal"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/linearLayout6"
-            android:weightSum="100"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp">
+            android:id="@+id/linearLayout3"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:layout_marginLeft="5dp">
             <ImageView
-                android:src="@drawable/parking"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="30"
                 android:id="@+id/imageViewAddress"
-                android:layout_marginLeft="10dp"
+                android:src="@drawable/parking"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
                 android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:layout_marginTop="10dp" />
+                android:adjustViewBounds="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:layout_marginRight="5dp">
             <TextView
                 android:id="@+id/textViewName"
                 android:text="Medrano Parking"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="70"
+                android:layout_width="match_parent"
                 android:textColor="#505050"
-                android:textSize="30sp"
+                android:textSize="18sp"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_vertical" />
+                android:textStyle="bold"
+                android:layout_marginLeft="3dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/textViewAddress"
+                android:text="Artigas 1613"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#505050"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginLeft="3dp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

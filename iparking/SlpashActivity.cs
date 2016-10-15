@@ -13,25 +13,27 @@ using System.Threading.Tasks;
 using iparking.Entities;
 using System.Collections.Specialized;
 using Newtonsoft.Json;
+using iparking.Managment;
 
 namespace iparking
 {
     [Activity(Label = "iParking", Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
     public class SlpashActivity : Activity
     {
-        ISharedPreferences pref;
-        ISharedPreferencesEditor edit;
+        public const string errCode = "001";
+        public const string errMsg = "Error al intentar Conectar con Servidor Central";
+
+        FileManager fm;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            pref = Application.Context.GetSharedPreferences(ConfigManager.SharedFile, FileCreationMode.Private);
-            edit = pref.Edit();
+            fm = new FileManager();
 
-            string id = pref.GetString("id", String.Empty);
-            string email = pref.GetString("email", String.Empty);
-            string password = pref.GetString("password", String.Empty);
+            string id = fm.GetValue("id");
+            string email = fm.GetValue("email");
+            string password = fm.GetValue("password"); 
 
             if (id == String.Empty || email == String.Empty || password == String.Empty)
             {
@@ -48,16 +50,23 @@ namespace iparking
 
         public void login(string email, string password)
         {
-            // Consulta Web Service con ese usuario y ese password
-            System.Net.WebClient wclient = new System.Net.WebClient();
-            Uri uri = new Uri(ConfigManager.WebService + "/authenticate.php");
-            NameValueCollection param = new NameValueCollection();
+            try
+            {
+                // Consulta Web Service con ese usuario y ese password
+                System.Net.WebClient wclient = new System.Net.WebClient();
+                Uri uri = new Uri(ConfigManager.WebService + "/authenticate.php");
+                NameValueCollection param = new NameValueCollection();
 
-            param.Add("email", email);
-            param.Add("password", password);
+                param.Add("email", email);
+                param.Add("password", password);
 
-            wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted;
-            wclient.UploadValuesAsync(uri, param);
+                wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted;
+                wclient.UploadValuesAsync(uri, param);
+            }
+            catch (Exception ex)
+            {
+                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
+            }
         }
 
         private void Wclient_UploadValuesCompleted(object sender, System.Net.UploadValuesCompletedEventArgs e)
@@ -70,8 +79,7 @@ namespace iparking
                 if (or.error)
                 {
                     // Existen los datos, pero no son correctos. Redirecciono a Login
-                    edit.Clear();
-                    edit.Apply();
+                    fm.Clear();
 
                     Managment.ActivityManager.TakeMeTo(this, typeof(LoginActivity), true);
                 }
@@ -83,8 +91,7 @@ namespace iparking
 
             } catch(Exception ex)
             {
-                Console.WriteLine(" ** ERROR ** : " + ex.Message);
-                Managment.ActivityManager.TakeMeTo(this, typeof(ErrorActivity), true);
+                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
             }
         }
     }

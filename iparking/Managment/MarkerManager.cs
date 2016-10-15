@@ -20,7 +20,9 @@ namespace iparking.Managment
         {
             MarkerOptions mo = new MarkerOptions();
             mo.SetPosition(position);
-            mo.SetTitle(title);
+            // Nombre del Establecimiento
+            mo.SetTitle(title); 
+            // Direccion del Establecimiento
             mo.SetSnippet(snippet);
             mo.SetIcon(BitmapDescriptorFactory.DefaultMarker(color));
             
@@ -31,7 +33,7 @@ namespace iparking.Managment
         {
             MarkerOptions mo = new MarkerOptions();
             mo.SetPosition(position);
-            mo.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.circle));
+            //mo.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.circle));
             return mo;
         }
 
