@@ -32,6 +32,7 @@ namespace iparking.Managment
         private void MButtonCancel_Click(object sender, EventArgs e)
         {
             mCancelEvent.Invoke(this, new OnCancelEvent());
+            this.Dismiss();
         }
 
         public override void OnActivityCreated(Bundle savedInstanceState)

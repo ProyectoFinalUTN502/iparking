@@ -19,6 +19,18 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="90"
-        android:id="@+id/listViewVehicles" />
+        android:layout_weight="80"
+        android:id="@+id/listViewVehicles"
+        android:layout_marginBottom="10dp" />
+    <Button
+        android:text="Agregar Vehiculo"
+        android:id="@+id/buttonAddVehicle"
+        android:background="@drawable/dialogbuttonstyle"
+        android:textColor="#F9F9F9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="25dp"
+        android:layout_weight="10"
+        android:layout_marginBottom="10dp" />
 </LinearLayout>

@@ -299,17 +299,6 @@ namespace iparking
             dialog.SetParkinglot(parkinglot, nextPosition);
         }
 
-        //private void MMap_MarkerClick(object sender, MarkerClickEventArgs e)
-        //{
-        //    Parkinglot p = mParkinglots.Find(x => x.name == e.Marker.Title);
-
-        //    if (p == null) { return; }
-
-        //    // El usuario llego al Establecimiento, ir a Navegacion Interna
-        //    e.Marker.ShowInfoWindow();
-        //    Console.WriteLine(" El Usuario llego a " + p.name + " (" + p.address + ")");
-        //}
-
         public View GetInfoContents(Marker marker)
         {
             return null;

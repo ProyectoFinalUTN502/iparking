@@ -46,7 +46,7 @@ namespace iparking.Managment
         private void MButtonEnter_Click(object sender, EventArgs e)
         {
             mEnterEvent.Invoke(this, new OnEnterEventArgs(ParkinglotID, VehicleTypeID, ClientID));   
-            // this.Dismiss();
+            this.Dismiss();
         }
 
         public override void OnActivityCreated(Bundle savedInstanceState)

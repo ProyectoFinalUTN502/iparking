@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace iparking.Entities
 {
-    class Vehicle
+    public class Vehicle
     {
         public int id { get; set; }
         public string name { get; set; }

@@ -3,29 +3,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/dialogstyle"
     android:weightSum="100"
-    android:background="#F9F9F9">
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10">
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:text="Registre su Vehiculo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:textSize="28sp"
-            android:textColor="#ED9C28"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
+    android:minHeight="25px"
+    android:minWidth="25px">
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="0dp"
         android:layout_weight="20"
         android:layout_marginTop="5dp"
@@ -68,7 +53,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="0dp"
         android:layout_weight="35"
         android:layout_marginTop="5dp"
@@ -146,15 +131,15 @@
             </RadioGroup>
         </LinearLayout>
     </LinearLayout>
-<!-- Boton -->
     <LinearLayout
         android:id="@+id/linearLayout7"
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="0dp"
         android:layout_weight="35"
         android:gravity="bottom"
-        android:weightSum="100">
+        android:weightSum="100"
+        android:layout_marginLeft="10dp">
         <TextView
             android:text="La informacion ingresada no es valida"
             android:layout_width="match_parent"
@@ -164,10 +149,14 @@
             android:textColor="#e5412d"
             android:textStyle="bold"
             android:gravity="center"
-            android:visibility="invisible" />
+            android:visibility="visible"
+            android:textSize="12sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp" />
         <Button
-            android:id="@+id/btnRegisterAll"
-            android:text="Finalizar"
+            android:id="@+id/btnAddVehicle"
+            android:text="Agregar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="10"
