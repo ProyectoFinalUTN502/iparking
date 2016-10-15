@@ -13,15 +13,21 @@ using Android.Webkit;
 
 using iparking.Managment;
 using iparking.Entities;
+using Newtonsoft.Json;
 
 namespace iparking
 {
     [Activity(Label = "NavigationActivity", Theme = "@style/MyTheme.Base")]
     public class NavigationActivity : Activity
     {
+        private const string errCode = "900";
+        private const string errMsg = "No se ha podido iniciar la Navegacion Interna";
+
         private WebView mWebView;
         private ProgressBar mProgressBar;
+        private Button mButtonCancel;
         private WebClient mWebClient;
+        private List<int> mNavData;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,27 +35,57 @@ namespace iparking
 
             SetContentView(Resource.Layout.Navigation);
 
-            mWebClient = new WebClient();
+            mButtonCancel = FindViewById<Button>(Resource.Id.buttonCancel);
+            mButtonCancel.Click += MButtonCancel_Click;
 
-            mWebClient.mOnProgressBarChanged += (int state) =>
+            try
             {
-                if (state == 0)
-                {
-                    // termino, ocultar la progress
-                    mProgressBar.Visibility = ViewStates.Invisible;
-                }
-                else
-                {
-                    mProgressBar.Visibility = ViewStates.Visible;
-                }
-            };
+                string data = Intent.GetStringExtra("data");
+                mNavData = JsonConvert.DeserializeObject<List<int>>(data);
 
-            mProgressBar = FindViewById<ProgressBar>(Resource.Id.progressBar);
-            mWebView = FindViewById<WebView>(Resource.Id.webView);
+                mWebClient = new WebClient();
 
-            mWebView.Settings.JavaScriptEnabled = true;
-            mWebView.LoadUrl(ConfigManager.WebService + "/parkinglot/map/2");
-            mWebView.SetWebViewClient(mWebClient);
+                mWebClient.mOnProgressBarChanged += (int state) =>
+                {
+                    if (state == 0)
+                    {
+                        // termino, ocultar la progress
+                        mProgressBar.Visibility = ViewStates.Invisible;
+                    }
+                    else
+                    {
+                        mProgressBar.Visibility = ViewStates.Visible;
+                    }
+                };
+
+                mProgressBar = FindViewById<ProgressBar>(Resource.Id.progressBar);
+                mWebView = FindViewById<WebView>(Resource.Id.webView);
+
+                mWebView.Settings.JavaScriptEnabled = true;
+                mWebView.LoadUrl(ConfigManager.WebService + "/index.php");
+                mWebView.SetWebViewClient(mWebClient);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("** Error ** : " + ex.ToString());
+                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
+            }
+
+        }
+
+        private void MButtonCancel_Click(object sender, EventArgs e)
+        {
+            // Levantar Dialog de Confirmacion para Cancelar
+            FragmentTransaction trans = FragmentManager.BeginTransaction();
+            DialogParkingCancel dialogCancel = new DialogParkingCancel();
+            dialogCancel.Show(trans, "Dialog Cancel");
+            dialogCancel.mCancelEvent += DialogCancel_mCancelEvent;
+
+        }
+
+        private void DialogCancel_mCancelEvent(object sender, OnCancelEvent e)
+        {
+            Managment.ActivityManager.TakeMeTo(this, typeof(MainActivity), true);   
         }
     }
 

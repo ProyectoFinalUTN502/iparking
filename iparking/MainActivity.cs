@@ -33,6 +33,7 @@ namespace iparking
 
         private FragmentTransaction trans;
         private DialogParkingSearch dialog;
+        private DialogParkingEnter dialogEnter;
 
         private List<Parkinglot> mParkinglots;
         private System.Net.WebClient mClient;
@@ -339,7 +340,32 @@ namespace iparking
 
         public void OnInfoWindowClick(Marker marker)
         {
-            Console.WriteLine("Clickeaste la info window wacho!");
+            // Snippet = id:address
+            string[] data = marker.Snippet.Split(':');
+
+            int id = Convert.ToInt32(data[0]);
+            int c = Convert.ToInt32(fm.GetValue("id"));
+            int vt = Convert.ToInt32(fm.GetValue("vt_id"));
+
+            trans = FragmentManager.BeginTransaction();
+            dialogEnter = new DialogParkingEnter(id,vt,c);
+            dialogEnter.Show(trans, "Dialog Enter");
+            dialogEnter.mEnterEvent += DialogEnter_mEnterEvent;
+        }
+
+        private void DialogEnter_mEnterEvent(object sender, OnEnterEventArgs e)
+        {
+            string p = e.ParkinglotID.ToString();
+            string vt = e.VehicleTypeID.ToString();
+            string c = e.ClientID.ToString();
+
+            List<int> navData = new List<int>();
+            navData.Add(e.ParkinglotID);
+            navData.Add(e.VehicleTypeID);
+            navData.Add(e.ClientID);
+
+            Console.WriteLine("** Ingreso a: " + p + " " + vt + " " + c + " **");
+            Managment.ActivityManager.TakeMeTo(this, typeof(NavigationActivity), false, navData);
         }
 
         private LatLng GetClientLocation()
