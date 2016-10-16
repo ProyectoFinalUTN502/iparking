@@ -41,6 +41,32 @@ namespace iparking.Managment
             }
         }
 
+        public static void TakeMeTo(Activity activity, Type type, bool finish, object data)
+        {
+            Intent intent = new Intent(activity, type);
+            intent.PutExtra("data", JsonConvert.SerializeObject(data));
+            activity.StartActivity(intent);
+            activity.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+
+            if (finish)
+            {
+                activity.Finish();
+            }
+        }
+
+        public static T GetData<T>(Activity a)
+        {
+            try
+            {
+                string unserialized = a.Intent.GetStringExtra("data");
+                return JsonConvert.DeserializeObject<T>(unserialized);
+            }
+            catch
+            {
+                return default(T);
+            }
+        }
+
         public static void ShowError(Activity activity, Error error)
         {
             Intent intent = new Intent(activity, typeof(ErrorActivity));

@@ -67,6 +67,7 @@ namespace iparking
             SetContentView(Resource.Layout.Main);
 
             locationProvider = string.Empty;
+            currentLocation = null;
 
             fm = new FileManager();
             mParkinglots = new List<Parkinglot>();
@@ -78,14 +79,25 @@ namespace iparking
             mImageReSearch = FindViewById<ImageView>(Resource.Id.imageViewReSearch);
             mImageReSearch.Click += MImageReSearch_Click;
 
+            InitializeLocationManager();
             SetUpMap();
         }
 
         private void MImageReSearch_Click(object sender, EventArgs e)
         {
-            mMap.Clear();
-            mParkinglots.Clear();
-            searchParkinglots();
+            bool control = mMap != null &&
+               mParkinglots != null &&
+               dialog != null &&
+               dialogEnter != null;
+
+            if (control)
+            {
+                dialog.Dismiss();
+                dialogEnter.Dismiss();
+                mMap.Clear();
+                mParkinglots.Clear();
+                searchParkinglots();
+            }
         }
 
         private void MImageMore_Click(object sender, EventArgs e)
@@ -183,7 +195,7 @@ namespace iparking
         {
             mMap = googleMap;
 
-            LatLng latlng = GetClientLocation();
+            LatLng latlng = DeviceManager.GetClientLocation(locationProvider, currentLocation);//GetClientLocation();
             CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(latlng, ConfigManager.DefaultZoomMap); 
             mMap.MoveCamera(camera);
 
@@ -258,7 +270,7 @@ namespace iparking
 
             Parkinglot parkinglot = mParkinglots[index];
             LatLng parkingPosition = new LatLng(parkinglot.lat, parkinglot.lng);
-            LatLng clientPosition = GetClientLocation();
+            LatLng clientPosition = DeviceManager.GetClientLocation(locationProvider, currentLocation);
 
             mMarkerParking = MarkerManager.CreateMarker(parkingPosition, parkinglot.name, parkinglot.id + ":" + parkinglot.address, BitmapDescriptorFactory.HueRed);
             mMarkerUser = MarkerManager.CreateUserPosition(clientPosition);
@@ -357,48 +369,48 @@ namespace iparking
             Managment.ActivityManager.TakeMeTo(this, typeof(NavigationActivity), false, navData);
         }
 
-        private LatLng GetClientLocation()
-        {
-            LatLng clientLocation;
+        //private LatLng GetClientLocation()
+        //{
+        //    LatLng clientLocation;
 
-            if (locationProvider != string.Empty)
-            {
-                // Encontro una posicion con el GPS
-                clientLocation = new LatLng(currentLocation.Latitude, currentLocation.Longitude);
-            }
-            else
-            {
-                // Tengo que usar la posicion anterior
-                FileManager fm = new FileManager();
+        //    if (locationProvider != string.Empty && currentLocation != null)
+        //    {
+        //        // Encontro una posicion con el GPS
+        //        clientLocation = new LatLng(currentLocation.Latitude, currentLocation.Longitude);
+        //    }
+        //    else
+        //    {
+        //        // Tengo que usar la posicion anterior
+        //        FileManager fm = new FileManager();
 
-                string fileLat = fm.GetValue("lat");
-                string fileLng = fm.GetValue("lng");
+        //        string fileLat = fm.GetValue("lat");
+        //        string fileLng = fm.GetValue("lng");
 
-                if (fileLat == string.Empty || fileLng == string.Empty)
-                {
-                    // No hay ni posicion con GPS, ni estan grabadas en el archivo
-                    // uso valores por defecto
-                    clientLocation = new LatLng(ConfigManager.DefaultLatMap, ConfigManager.DefaultLongMap);
-                }
-                else
-                {
-                    clientLocation = new LatLng(Convert.ToDouble(fileLat), Convert.ToDouble(fileLng));
-                }
-            }
+        //        if (fileLat == string.Empty || fileLng == string.Empty)
+        //        {
+        //            // No hay ni posicion con GPS, ni estan grabadas en el archivo
+        //            // uso valores por defecto
+        //            clientLocation = new LatLng(ConfigManager.DefaultLatMap, ConfigManager.DefaultLongMap);
+        //        }
+        //        else
+        //        {
+        //            clientLocation = new LatLng(Convert.ToDouble(fileLat), Convert.ToDouble(fileLng));
+        //        }
+        //    }
 
-            return clientLocation;
-        }
+        //    return clientLocation;
+        //}
 
         private void UpdateClientPosition(LatLng clientPosition)
         {
-            bool control = mMap != null && mMarkerUser != null && mMarkerParking != null;
-            if (control)
-            {
-                mMarkerUser.SetPosition(clientPosition);
+            if (dialog != null) { dialog.Dismiss(); }
+            if (dialogEnter != null) { dialogEnter.Dismiss(); }
 
+            if (mMap != null && mParkinglots != null)
+            {
                 mMap.Clear();
-                mMap.AddMarker(mMarkerParking);
-                mMap.AddMarker(mMarkerUser);
+                mParkinglots.Clear();
+                searchParkinglots();
             }
         }
 

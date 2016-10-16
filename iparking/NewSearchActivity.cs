@@ -92,7 +92,7 @@ namespace iparking
             mProfile.isCovered = isCovered;
 
             // Aca va a la MainNewSearchActivity
-            Managment.ActivityManager.TakeMeTo(this, typeof(MainNewSearchActivity), false);
+            Managment.ActivityManager.TakeMeTo(this, typeof(MainNewSearchActivity), false, mProfile);
         }
 
         private void MBack_Click(object sender, EventArgs e)
