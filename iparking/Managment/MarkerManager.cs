@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Gms.Maps.Model;
 using Android.Graphics;
+using iparking.Entities;
 
 namespace iparking.Managment
 {
@@ -33,7 +34,16 @@ namespace iparking.Managment
         {
             MarkerOptions mo = new MarkerOptions();
             mo.SetPosition(position);
-            //mo.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.circle));
+            return mo;
+        }
+
+        public static MarkerOptions CreateUserDragable()
+        {
+            MarkerOptions mo = new MarkerOptions();
+            LatLng position = new LatLng(ConfigManager.DefaultLatMap, ConfigManager.DefaultLongMap);
+            mo.SetPosition(position);
+            mo.Draggable(true);
+
             return mo;
         }
 

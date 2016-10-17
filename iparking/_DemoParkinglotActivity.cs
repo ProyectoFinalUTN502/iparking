@@ -28,7 +28,7 @@ namespace iparking
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.demo_parkinglot);
+            SetContentView(Resource.Layout._demo_parkinglot);
 
             btnLayout1 = FindViewById<Button>(Resource.Id.btnLayout1);
             btnLayout2 = FindViewById<Button>(Resource.Id.btnLayout2);

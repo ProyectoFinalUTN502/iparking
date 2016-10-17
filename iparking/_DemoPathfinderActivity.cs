@@ -32,7 +32,7 @@ namespace iparking
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.demo_pathfinder);
+            SetContentView(Resource.Layout._demo_pathfinder);
 
             btnEnd = FindViewById<Button>(Resource.Id.btnEnd);
             mProgress = FindViewById<ProgressBar>(Resource.Id.progressBar);

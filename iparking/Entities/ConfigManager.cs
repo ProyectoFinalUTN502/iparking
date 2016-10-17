@@ -26,5 +26,7 @@ namespace iparking.Entities
 
         // Un Zoom que me permite ver bien donde estoy parado
         public const Int32 DefaultZoomMap = 15;
+        // Un zoom mas amplio para que el Drageo se haga mas facil
+        public const Int32 DefaultDraggZoomMap = 12;
     }
 }

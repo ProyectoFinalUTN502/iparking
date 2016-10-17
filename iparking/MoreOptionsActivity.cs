@@ -42,35 +42,33 @@ namespace iparking
 
         private void MNewSearch_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(NewSearchActivity));
-            this.StartActivity(intent);
-            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
-            this.Finish();
+            // CU: Buscar Establecimiento Por Parametros
+            Managment.ActivityManager.TakeMeTo(this, typeof(NewSearchActivity), true);
         }
 
         private void MNewLocation_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(NewLocationActivity));
-            this.StartActivity(intent);
-            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
-            this.Finish();
+            // CU: Buscar Establecimiento en Mapa
+            Managment.ActivityManager.TakeMeTo(this, typeof(MainSearchLocationActivity), true);
         }
 
         private void MHistory_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(HistoryActivity));
-            this.StartActivity(intent);
-            this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
-            this.Finish();
+            //Intent intent = new Intent(this, typeof(HistoryActivity));
+            //this.StartActivity(intent);
+            //this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
+            //this.Finish();
         }
 
         private void MEditProfile_Click(object sender, EventArgs e)
         {
+            // Editar el Perfil actual del Cliente
             Managment.ActivityManager.TakeMeTo(this, typeof(EditProfileActivity), false);
         }
 
         private void MBack_Click(object sender, EventArgs e)
         {
+            // Volver a Pantalla Principal
             Managment.ActivityManager.TakeMeTo(this, typeof(MainActivity), true);
         }
     }
