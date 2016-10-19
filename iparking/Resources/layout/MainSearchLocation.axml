@@ -4,20 +4,20 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#F9F9F9">
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+  <RelativeLayout
+      android:id="@+id/relativeLayout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <fragment
+        android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <fragment
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.google.android.gms.maps.MapFragment" />
-        <ProgressBar
-            android:id="@+id/progressBarRoute"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="invisible" />
-    </RelativeLayout>
+        android:layout_height="match_parent"
+        android:name="com.google.android.gms.maps.MapFragment" />
+    <ProgressBar
+        android:id="@+id/progressBarRoute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+  </RelativeLayout>
 </LinearLayout>

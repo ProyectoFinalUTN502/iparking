@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#F9F9F9"
+    android:background="#FFFFFF"
     android:weightSum="100">
     <TextView
         android:text="Paso 1: Registrate"
@@ -12,18 +12,33 @@
         android:layout_height="0dp"
         android:layout_weight="10"
         android:id="@+id/textViewFirstTitle"
-        android:textColor="#000000"
+        android:textColor="#8c8c8c"
         android:textSize="32sp"
-        android:layout_marginLeft="5dp" />
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp" />
     <TextView
-        android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu"
+        android:text="Crea un Usuario por unica vez y completa tus preferencias de Estacionamiento"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="80"
+        android:layout_weight="22"
         android:id="@+id/textViewFirstBody"
         android:layout_marginTop="5dp"
-        android:textColor="#000000"
-        android:layout_marginLeft="10dp" />
+        android:textColor="#8c8c8c"
+        android:layout_marginLeft="10dp"
+        android:textSize="22sp"
+        android:layout_marginRight="10dp" />
+    <TextView
+        android:text="Esto nos permitra ofrecerte el lugar indicado para vos!"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="58"
+        android:id="@+id/textViewFirstBody"
+        android:layout_marginTop="5dp"
+        android:textColor="#8c8c8c"
+        android:layout_marginLeft="10dp"
+        android:textSize="22sp"
+        android:layout_marginRight="10dp" />
     <Button
         android:text="Entendido"
         android:layout_width="match_parent"
@@ -31,8 +46,8 @@
         android:layout_weight="10"
         android:id="@+id/buttonFirst"
         android:background="#ED9C28"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
         android:textColor="#FFFFFF" />
 </LinearLayout>

@@ -1750,34 +1750,46 @@ namespace iparking
 			public const int InfoWindowStyle = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int location = 2130837633;
+			public const int Instructions_1 = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int new_location = 2130837634;
+			public const int location = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int not_found = 2130837635;
-			
-			// aapt resource value: 0x7f02008a
-			public const int notification_template_icon_bg = 2130837642;
+			public const int new_location = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int parking = 2130837636;
+			public const int not_found = 2130837636;
+			
+			// aapt resource value: 0x7f02008e
+			public const int notification_template_icon_bg = 2130837646;
 			
 			// aapt resource value: 0x7f020085
-			public const int previous = 2130837637;
+			public const int parking = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int price = 2130837638;
+			public const int previous = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int splash = 2130837639;
+			public const int price = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int splash_screen = 2130837640;
+			public const int Slide1 = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int update = 2130837641;
+			public const int Slide2 = 2130837641;
+			
+			// aapt resource value: 0x7f02008a
+			public const int Slide3 = 2130837642;
+			
+			// aapt resource value: 0x7f02008b
+			public const int splash = 2130837643;
+			
+			// aapt resource value: 0x7f02008c
+			public const int splash_screen = 2130837644;
+			
+			// aapt resource value: 0x7f02008d
+			public const int update = 2130837645;
 			
 			static Drawable()
 			{
@@ -1792,8 +1804,8 @@ namespace iparking
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b00c5
-			public const int action0 = 2131427525;
+			// aapt resource value: 0x7f0b00c2
+			public const int action0 = 2131427522;
 			
 			// aapt resource value: 0x7f0b005c
 			public const int action_bar = 2131427420;
@@ -1819,8 +1831,8 @@ namespace iparking
 			// aapt resource value: 0x7f0b005d
 			public const int action_context_bar = 2131427421;
 			
-			// aapt resource value: 0x7f0b00c9
-			public const int action_divider = 2131427529;
+			// aapt resource value: 0x7f0b00c6
+			public const int action_divider = 2131427526;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1882,20 +1894,20 @@ namespace iparking
 			// aapt resource value: 0x7f0b002e
 			public const int btnLayout3 = 2131427374;
 			
-			// aapt resource value: 0x7f0b00b3
-			public const int btnLogin = 2131427507;
+			// aapt resource value: 0x7f0b00b0
+			public const int btnLogin = 2131427504;
 			
-			// aapt resource value: 0x7f0b00c4
-			public const int btnNewSearch = 2131427524;
+			// aapt resource value: 0x7f0b00c1
+			public const int btnNewSearch = 2131427521;
 			
-			// aapt resource value: 0x7f0b00d8
-			public const int btnRegisterAll = 2131427544;
+			// aapt resource value: 0x7f0b00d5
+			public const int btnRegisterAll = 2131427541;
 			
-			// aapt resource value: 0x7f0b00d7
-			public const int btnRegisterProfile = 2131427543;
+			// aapt resource value: 0x7f0b00d4
+			public const int btnRegisterProfile = 2131427540;
 			
-			// aapt resource value: 0x7f0b00d6
-			public const int btnRegisterUser = 2131427542;
+			// aapt resource value: 0x7f0b00d3
+			public const int btnRegisterUser = 2131427539;
 			
 			// aapt resource value: 0x7f0b0033
 			public const int btnSuv = 2131427379;
@@ -1906,11 +1918,11 @@ namespace iparking
 			// aapt resource value: 0x7f0b0093
 			public const int buttonAccept = 2131427475;
 			
-			// aapt resource value: 0x7f0b00da
-			public const int buttonAddVehicle = 2131427546;
+			// aapt resource value: 0x7f0b00d7
+			public const int buttonAddVehicle = 2131427543;
 			
-			// aapt resource value: 0x7f0b00af
-			public const int buttonBegin = 2131427503;
+			// aapt resource value: 0x7f0b00ac
+			public const int buttonBegin = 2131427500;
 			
 			// aapt resource value: 0x7f0b007f
 			public const int buttonCancel = 2131427455;
@@ -1933,17 +1945,17 @@ namespace iparking
 			// aapt resource value: 0x7f0b0046
 			public const int buttonPanel = 2131427398;
 			
-			// aapt resource value: 0x7f0b00ad
-			public const int buttonSecond = 2131427501;
+			// aapt resource value: 0x7f0b00ab
+			public const int buttonSecond = 2131427499;
 			
-			// aapt resource value: 0x7f0b00c6
-			public const int cancel_action = 2131427526;
+			// aapt resource value: 0x7f0b00c3
+			public const int cancel_action = 2131427523;
 			
 			// aapt resource value: 0x7f0b0054
 			public const int checkbox = 2131427412;
 			
-			// aapt resource value: 0x7f0b00cc
-			public const int chronometer = 2131427532;
+			// aapt resource value: 0x7f0b00c9
+			public const int chronometer = 2131427529;
 			
 			// aapt resource value: 0x7f0b0028
 			public const int collapseActionView = 2131427368;
@@ -1978,8 +1990,8 @@ namespace iparking
 			// aapt resource value: 0x7f0b0025
 			public const int end = 2131427365;
 			
-			// aapt resource value: 0x7f0b00d1
-			public const int end_padder = 2131427537;
+			// aapt resource value: 0x7f0b00ce
+			public const int end_padder = 2131427534;
 			
 			// aapt resource value: 0x7f0b0040
 			public const int expand_activities_button = 2131427392;
@@ -2011,8 +2023,8 @@ namespace iparking
 			// aapt resource value: 0x7f0b007d
 			public const int imageView1 = 2131427453;
 			
-			// aapt resource value: 0x7f0b00b8
-			public const int imageView2 = 2131427512;
+			// aapt resource value: 0x7f0b00b5
+			public const int imageView2 = 2131427509;
 			
 			// aapt resource value: 0x7f0b0082
 			public const int imageViewAddress = 2131427458;
@@ -2038,17 +2050,17 @@ namespace iparking
 			// aapt resource value: 0x7f0b0087
 			public const int imageViewTime = 2131427463;
 			
-			// aapt resource value: 0x7f0b00d0
-			public const int info = 2131427536;
+			// aapt resource value: 0x7f0b00cd
+			public const int info = 2131427533;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int light = 2131427349;
 			
-			// aapt resource value: 0x7f0b00ca
-			public const int line1 = 2131427530;
+			// aapt resource value: 0x7f0b00c7
+			public const int line1 = 2131427527;
 			
-			// aapt resource value: 0x7f0b00ce
-			public const int line3 = 2131427534;
+			// aapt resource value: 0x7f0b00cb
+			public const int line3 = 2131427531;
 			
 			// aapt resource value: 0x7f0b0036
 			public const int linearLayout1 = 2131427382;
@@ -2065,38 +2077,38 @@ namespace iparking
 			// aapt resource value: 0x7f0b0084
 			public const int linearLayout2 = 2131427460;
 			
-			// aapt resource value: 0x7f0b00b7
-			public const int linearLayout21 = 2131427511;
+			// aapt resource value: 0x7f0b00b4
+			public const int linearLayout21 = 2131427508;
 			
-			// aapt resource value: 0x7f0b00b9
-			public const int linearLayout22 = 2131427513;
+			// aapt resource value: 0x7f0b00b6
+			public const int linearLayout22 = 2131427510;
 			
 			// aapt resource value: 0x7f0b0070
 			public const int linearLayout3 = 2131427440;
 			
-			// aapt resource value: 0x7f0b00bb
-			public const int linearLayout31 = 2131427515;
+			// aapt resource value: 0x7f0b00b8
+			public const int linearLayout31 = 2131427512;
 			
-			// aapt resource value: 0x7f0b00bc
-			public const int linearLayout32 = 2131427516;
+			// aapt resource value: 0x7f0b00b9
+			public const int linearLayout32 = 2131427513;
 			
 			// aapt resource value: 0x7f0b006b
 			public const int linearLayout4 = 2131427435;
 			
-			// aapt resource value: 0x7f0b00be
-			public const int linearLayout41 = 2131427518;
+			// aapt resource value: 0x7f0b00bb
+			public const int linearLayout41 = 2131427515;
 			
-			// aapt resource value: 0x7f0b00bf
-			public const int linearLayout42 = 2131427519;
+			// aapt resource value: 0x7f0b00bc
+			public const int linearLayout42 = 2131427516;
 			
 			// aapt resource value: 0x7f0b008b
 			public const int linearLayout5 = 2131427467;
 			
-			// aapt resource value: 0x7f0b00c1
-			public const int linearLayout51 = 2131427521;
+			// aapt resource value: 0x7f0b00be
+			public const int linearLayout51 = 2131427518;
 			
-			// aapt resource value: 0x7f0b00c2
-			public const int linearLayout52 = 2131427522;
+			// aapt resource value: 0x7f0b00bf
+			public const int linearLayout52 = 2131427519;
 			
 			// aapt resource value: 0x7f0b0081
 			public const int linearLayout6 = 2131427457;
@@ -2143,8 +2155,8 @@ namespace iparking
 			// aapt resource value: 0x7f0b0016
 			public const int listMode = 2131427350;
 			
-			// aapt resource value: 0x7f0b00d9
-			public const int listViewVehicles = 2131427545;
+			// aapt resource value: 0x7f0b00d6
+			public const int listViewVehicles = 2131427542;
 			
 			// aapt resource value: 0x7f0b0043
 			public const int list_item = 2131427395;
@@ -2152,8 +2164,8 @@ namespace iparking
 			// aapt resource value: 0x7f0b003b
 			public const int map = 2131427387;
 			
-			// aapt resource value: 0x7f0b00c8
-			public const int media_actions = 2131427528;
+			// aapt resource value: 0x7f0b00c5
+			public const int media_actions = 2131427525;
 			
 			// aapt resource value: 0x7f0b0026
 			public const int middle = 2131427366;
@@ -2176,11 +2188,11 @@ namespace iparking
 			// aapt resource value: 0x7f0b0030
 			public const int progressBar = 2131427376;
 			
-			// aapt resource value: 0x7f0b00d5
-			public const int progressBarRegister = 2131427541;
+			// aapt resource value: 0x7f0b00d2
+			public const int progressBarRegister = 2131427538;
 			
-			// aapt resource value: 0x7f0b00b6
-			public const int progressBarRoute = 2131427510;
+			// aapt resource value: 0x7f0b00b3
+			public const int progressBarRoute = 2131427507;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
@@ -2224,8 +2236,8 @@ namespace iparking
 			// aapt resource value: 0x7f0b0075
 			public const int radioGroupVt = 2131427445;
 			
-			// aapt resource value: 0x7f0b00b5
-			public const int relativeLayout = 2131427509;
+			// aapt resource value: 0x7f0b00b2
+			public const int relativeLayout = 2131427506;
 			
 			// aapt resource value: 0x7f0b000c
 			public const int satellite = 2131427340;
@@ -2311,8 +2323,8 @@ namespace iparking
 			// aapt resource value: 0x7f0b0011
 			public const int standard = 2131427345;
 			
-			// aapt resource value: 0x7f0b00c7
-			public const int status_bar_latest_event_content = 2131427527;
+			// aapt resource value: 0x7f0b00c4
+			public const int status_bar_latest_event_content = 2131427524;
 			
 			// aapt resource value: 0x7f0b0067
 			public const int submit_area = 2131427431;
@@ -2323,11 +2335,11 @@ namespace iparking
 			// aapt resource value: 0x7f0b000d
 			public const int terrain = 2131427341;
 			
-			// aapt resource value: 0x7f0b00cf
-			public const int text = 2131427535;
+			// aapt resource value: 0x7f0b00cc
+			public const int text = 2131427532;
 			
-			// aapt resource value: 0x7f0b00cd
-			public const int text2 = 2131427533;
+			// aapt resource value: 0x7f0b00ca
+			public const int text2 = 2131427530;
 			
 			// aapt resource value: 0x7f0b009b
 			public const int textPrice = 2131427483;
@@ -2344,8 +2356,8 @@ namespace iparking
 			// aapt resource value: 0x7f0b0085
 			public const int textViewAddress = 2131427461;
 			
-			// aapt resource value: 0x7f0b00ba
-			public const int textViewEditProfile = 2131427514;
+			// aapt resource value: 0x7f0b00b7
+			public const int textViewEditProfile = 2131427511;
 			
 			// aapt resource value: 0x7f0b007b
 			public const int textViewError = 2131427451;
@@ -2356,11 +2368,11 @@ namespace iparking
 			// aapt resource value: 0x7f0b00a8
 			public const int textViewFirstTitle = 2131427496;
 			
-			// aapt resource value: 0x7f0b00c3
-			public const int textViewHistory = 2131427523;
+			// aapt resource value: 0x7f0b00c0
+			public const int textViewHistory = 2131427520;
 			
-			// aapt resource value: 0x7f0b00b0
-			public const int textViewInstructions = 2131427504;
+			// aapt resource value: 0x7f0b00ad
+			public const int textViewInstructions = 2131427501;
 			
 			// aapt resource value: 0x7f0b0072
 			public const int textViewIs24 = 2131427442;
@@ -2371,11 +2383,11 @@ namespace iparking
 			// aapt resource value: 0x7f0b0083
 			public const int textViewName = 2131427459;
 			
-			// aapt resource value: 0x7f0b00bd
-			public const int textViewNewLocation = 2131427517;
+			// aapt resource value: 0x7f0b00ba
+			public const int textViewNewLocation = 2131427514;
 			
-			// aapt resource value: 0x7f0b00c0
-			public const int textViewNewSearch = 2131427520;
+			// aapt resource value: 0x7f0b00bd
+			public const int textViewNewSearch = 2131427517;
 			
 			// aapt resource value: 0x7f0b008e
 			public const int textViewPositions = 2131427470;
@@ -2386,23 +2398,14 @@ namespace iparking
 			// aapt resource value: 0x7f0b0096
 			public const int textViewRange = 2131427478;
 			
-			// aapt resource value: 0x7f0b00ac
-			public const int textViewSecondBody = 2131427500;
-			
-			// aapt resource value: 0x7f0b00ab
-			public const int textViewSecondTitle = 2131427499;
-			
-			// aapt resource value: 0x7f0b00ae
-			public const int textViewThirdTitle = 2131427502;
-			
 			// aapt resource value: 0x7f0b0088
 			public const int textViewTime = 2131427464;
 			
 			// aapt resource value: 0x7f0b0094
 			public const int textViewTitle = 2131427476;
 			
-			// aapt resource value: 0x7f0b00cb
-			public const int time = 2131427531;
+			// aapt resource value: 0x7f0b00c8
+			public const int time = 2131427528;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int title = 2131427397;
@@ -2413,23 +2416,23 @@ namespace iparking
 			// aapt resource value: 0x7f0b0049
 			public const int topPanel = 2131427401;
 			
-			// aapt resource value: 0x7f0b00b4
-			public const int txtNewUser = 2131427508;
-			
-			// aapt resource value: 0x7f0b00d4
-			public const int txtRegisterError = 2131427540;
-			
 			// aapt resource value: 0x7f0b00b1
-			public const int txtUserEmail = 2131427505;
+			public const int txtNewUser = 2131427505;
 			
-			// aapt resource value: 0x7f0b00d3
-			public const int txtUserLastName = 2131427539;
+			// aapt resource value: 0x7f0b00d1
+			public const int txtRegisterError = 2131427537;
 			
-			// aapt resource value: 0x7f0b00d2
-			public const int txtUserName = 2131427538;
+			// aapt resource value: 0x7f0b00ae
+			public const int txtUserEmail = 2131427502;
 			
-			// aapt resource value: 0x7f0b00b2
-			public const int txtUserPassword = 2131427506;
+			// aapt resource value: 0x7f0b00d0
+			public const int txtUserLastName = 2131427536;
+			
+			// aapt resource value: 0x7f0b00cf
+			public const int txtUserName = 2131427535;
+			
+			// aapt resource value: 0x7f0b00af
+			public const int txtUserPassword = 2131427503;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int up = 2131427336;
@@ -2581,124 +2584,127 @@ namespace iparking
 			public const int abc_select_dialog_material = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int ActionBarLocation = 2130903069;
+			public const int ActionBarInstructions = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int ActionBarMain = 2130903070;
+			public const int ActionBarLocation = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int ActionBarSearch = 2130903071;
+			public const int ActionBarMain = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int DialogAddVehicle = 2130903072;
+			public const int ActionBarSearch = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int DialogParkingCancel = 2130903073;
+			public const int DialogAddVehicle = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int DialogParkingEnter = 2130903074;
+			public const int DialogParkingCancel = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int DialogParkingSearch = 2130903075;
+			public const int DialogParkingEnter = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int DialogParkingSearchError = 2130903076;
+			public const int DialogParkingSearch = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int DialogParkingSearchInstructions = 2130903077;
+			public const int DialogParkingSearchError = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int EditProfile = 2130903078;
+			public const int DialogParkingSearchInstructions = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int Error = 2130903079;
+			public const int EditProfile = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int History = 2130903080;
+			public const int Error = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int InfoWindowsMain = 2130903081;
+			public const int History = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int InstructionsFirst = 2130903082;
+			public const int InfoWindowsMain = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int InstructionsSecond = 2130903083;
+			public const int InstructionsFirst = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int InstructionsThird = 2130903084;
+			public const int InstructionsSecond = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int Login = 2130903085;
+			public const int InstructionsThird = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int Main = 2130903086;
+			public const int Login = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int MainNewSearch = 2130903087;
+			public const int Main = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int MainSearchLocation = 2130903088;
+			public const int MainNewSearch = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int MoreOptions = 2130903089;
+			public const int MainSearchLocation = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int Navigation = 2130903090;
+			public const int MoreOptions = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int NewSearch = 2130903091;
+			public const int Navigation = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int notification_media_action = 2130903092;
+			public const int NewSearch = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int notification_media_cancel_action = 2130903093;
+			public const int notification_media_action = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int notification_template_big_media = 2130903094;
+			public const int notification_media_cancel_action = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int notification_template_big_media_narrow = 2130903095;
+			public const int notification_template_big_media = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int notification_template_lines = 2130903096;
+			public const int notification_template_big_media_narrow = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int notification_template_media = 2130903097;
+			public const int notification_template_lines = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int notification_template_part_chronometer = 2130903098;
+			public const int notification_template_media = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int notification_template_part_time = 2130903099;
+			public const int notification_template_part_chronometer = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int Register = 2130903100;
+			public const int notification_template_part_time = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int RegisterProfile = 2130903101;
+			public const int Register = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int RegisterVehicle = 2130903102;
+			public const int RegisterProfile = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int select_dialog_item_material = 2130903103;
+			public const int RegisterVehicle = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int select_dialog_multichoice_material = 2130903104;
+			public const int select_dialog_item_material = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int select_dialog_singlechoice_material = 2130903105;
+			public const int select_dialog_multichoice_material = 2130903105;
 			
 			// aapt resource value: 0x7f030042
-			public const int support_simple_spinner_dropdown_item = 2130903106;
+			public const int select_dialog_singlechoice_material = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int Vehicle = 2130903107;
+			public const int support_simple_spinner_dropdown_item = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int VehicleListRow = 2130903108;
+			public const int Vehicle = 2130903108;
+			
+			// aapt resource value: 0x7f030045
+			public const int VehicleListRow = 2130903109;
 			
 			static Layout()
 			{

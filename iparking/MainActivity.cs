@@ -44,6 +44,7 @@ namespace iparking
 
         private ImageView mImageMore;
         private ImageView mImageReSearch;
+        private ProgressBar mProgressBar;
 
         private FileManager fm;
 
@@ -73,6 +74,9 @@ namespace iparking
             mParkinglots = new List<Parkinglot>();
             mPosition = 0;
 
+            mProgressBar = FindViewById<ProgressBar>(Resource.Id.progressBarRoute);
+            mProgressBar.Visibility = ViewStates.Invisible;
+
             mImageMore = FindViewById<ImageView>(Resource.Id.imageViewMore);
             mImageMore.Click += MImageMore_Click;
 
@@ -85,15 +89,11 @@ namespace iparking
 
         private void MImageReSearch_Click(object sender, EventArgs e)
         {
-            bool control = mMap != null &&
-               mParkinglots != null &&
-               dialog != null &&
-               dialogEnter != null;
+            if (dialog != null) { dialog.Dismiss(); }
+            if (dialogEnter != null) { dialogEnter.Dismiss(); }
 
-            if (control)
+            if (mMap != null && mParkinglots != null)
             {
-                dialog.Dismiss();
-                dialogEnter.Dismiss();
                 mMap.Clear();
                 mParkinglots.Clear();
                 searchParkinglots();
@@ -218,6 +218,7 @@ namespace iparking
                 mClient = new System.Net.WebClient();
                 Uri url = new Uri(ConfigManager.WebService + "/" + "searchParkinglot.php?" + urlRef);
 
+                mProgressBar.Visibility = ViewStates.Visible;
                 mClient.DownloadDataAsync(url);
                 mClient.DownloadDataCompleted += MClient_DownloadDataCompleted;
             }
@@ -238,6 +239,7 @@ namespace iparking
                 {
                     RunOnUiThread(() =>
                     {
+                        mProgressBar.Visibility = ViewStates.Invisible;
                         trans = FragmentManager.BeginTransaction();
                         dialog = new DialogParkingSearch();
                         dialog.Show(trans, "Dialog Parking Search");
@@ -248,6 +250,7 @@ namespace iparking
                     RunOnUiThread(() =>
                     {
                         //Levanto el Dialog aca, asi me aseguro que siempre haya mapa donde mostrar los marcadores
+                        mProgressBar.Visibility = ViewStates.Invisible;
                         trans = FragmentManager.BeginTransaction();
                         dialog = new DialogParkingSearch(mParkinglots[mPosition], mPosition);
                         dialog.Show(trans, "Dialog Parking Search");
@@ -424,6 +427,7 @@ namespace iparking
                 System.Net.WebClient localClient = new System.Net.WebClient();
                 Uri url = new Uri(ConfigManager.GoogleService + "origin=" + origin + "&destination=" + destination);
 
+                mProgressBar.Visibility = ViewStates.Visible;
                 localClient.DownloadDataAsync(url);
                 localClient.DownloadDataCompleted += LocalClient_DownloadDataCompleted;
             }
@@ -443,8 +447,10 @@ namespace iparking
                 PolylineOptions po = DirectionController.ResolveRoute(googleDirection);
 
                 RunOnUiThread(() =>
-                    mMap.AddPolyline(po)
-                );
+                {
+                    mProgressBar.Visibility = ViewStates.Invisible;
+                    mMap.AddPolyline(po);
+                });
             }
             catch (Exception ex)
             {

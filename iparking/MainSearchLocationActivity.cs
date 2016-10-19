@@ -61,6 +61,7 @@ namespace iparking
 
             mImageSearch.Click += MImageSearch_Click;
             mImageBack.Click += MImageBack_Click;
+            mProgressMap.Visibility = ViewStates.Invisible;
 
             ShowInstructions();
             SetUpMap();

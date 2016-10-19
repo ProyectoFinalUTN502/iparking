@@ -12,13 +12,16 @@ using Android.Widget;
 
 namespace iparking
 {
-    [Activity(Label = "InstructionsThirdActivity", Theme = "@style/MyTheme.Base")]
+    [Activity(Label = "InstructionsThirdActivity", Theme = "@style/CustomActionBarTheme", LaunchMode = Android.Content.PM.LaunchMode.SingleTask)]
     public class InstructionsThirdActivity : Activity
     {
         Button mButtonFinish;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            ActionBar.SetCustomView(Resource.Layout.ActionBarInstructions);
+            ActionBar.SetDisplayShowCustomEnabled(true);
 
             SetContentView(Resource.Layout.InstructionsThird);
 

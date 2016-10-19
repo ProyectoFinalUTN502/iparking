@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    android:weightSum="100">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="70"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:padding="0dp"
+        android:weightSum="100"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <TextView
+            android:text="iParking"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView1"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:textSize="32sp"
+            android:textColor="#F9F9F9" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="30"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout4"
+        android:weightSum="100"
+        android:padding="0dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="#FFFFFF">
+    <!--<ImageView
+            android:id="@+id/imageViewBack"
+            android:src="@drawable/splash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="false" />-->
+    </LinearLayout>
+</LinearLayout>

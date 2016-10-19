@@ -41,6 +41,7 @@ namespace iparking
 
         private ImageView mImageReload;
         private ImageView mImageBack;
+        private ProgressBar mProgressBar;
 
         private FileManager fm;
 
@@ -71,9 +72,11 @@ namespace iparking
 
             mImageReload = FindViewById<ImageView>(Resource.Id.imageViewReload);
             mImageBack = FindViewById<ImageView>(Resource.Id.imageViewBack);
+            mProgressBar = FindViewById<ProgressBar>(Resource.Id.progressBarRoute);
 
             mImageReload.Click += MImageReload_Click;
             mImageBack.Click += MImageBack_Click;
+            mProgressBar.Visibility = ViewStates.Invisible;
 
             InitializeLocationManager();
             SetUpMap();
@@ -120,6 +123,7 @@ namespace iparking
 
                 Uri url = new Uri(ConfigManager.WebService + "/" + "searchParkinglotParam.php?" + urlRef);
 
+                mProgressBar.Visibility = ViewStates.Visible;
                 mClient.DownloadDataAsync(url);
                 mClient.DownloadDataCompleted += MClient_DownloadDataCompleted;
             }
@@ -140,6 +144,7 @@ namespace iparking
                 {
                     RunOnUiThread(() =>
                     {
+                        mProgressBar.Visibility = ViewStates.Invisible;
                         trans = FragmentManager.BeginTransaction();
                         dialog = new DialogParkingSearch();
                         dialog.Show(trans, "Dialog Parking Search");
@@ -151,6 +156,7 @@ namespace iparking
                     RunOnUiThread(() =>
                     {
                         //Levanto el Dialog aca, asi me aseguro que siempre haya mapa donde mostrar los marcadores
+                        mProgressBar.Visibility = ViewStates.Invisible;
                         trans = FragmentManager.BeginTransaction();
                         dialog = new DialogParkingSearch(mParkinglots[mPosition], mPosition);
                         dialog.Show(trans, "Dialog Parking Search");
@@ -238,6 +244,7 @@ namespace iparking
                 System.Net.WebClient localClient = new System.Net.WebClient();
                 Uri url = new Uri(ConfigManager.GoogleService + "origin=" + origin + "&destination=" + destination);
 
+                mProgressBar.Visibility = ViewStates.Visible;
                 localClient.DownloadDataAsync(url);
                 localClient.DownloadDataCompleted += LocalClient_DownloadDataCompleted;
             }
@@ -257,8 +264,10 @@ namespace iparking
                 PolylineOptions po = DirectionController.ResolveRoute(googleDirection);
 
                 RunOnUiThread(() =>
-                    mMap.AddPolyline(po)
-                );
+                {
+                    mProgressBar.Visibility = ViewStates.Invisible;
+                    mMap.AddPolyline(po);
+                });
             }
             catch (Exception ex)
             {
