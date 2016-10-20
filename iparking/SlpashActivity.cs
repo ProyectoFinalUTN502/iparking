@@ -65,7 +65,7 @@ namespace iparking
             }
             catch (Exception ex)
             {
-                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
+                Managment.ActivityManager.TakeMeTo(this, typeof(LoginActivity), true);
             }
         }
 
@@ -80,7 +80,6 @@ namespace iparking
                 {
                     // Existen los datos, pero no son correctos. Redirecciono a Login
                     fm.Clear();
-
                     Managment.ActivityManager.TakeMeTo(this, typeof(LoginActivity), true);
                 }
                 else
@@ -91,7 +90,7 @@ namespace iparking
 
             } catch(Exception ex)
             {
-                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
+                Managment.ActivityManager.TakeMeTo(this, typeof(LoginActivity), true);
             }
         }
     }

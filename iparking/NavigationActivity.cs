@@ -60,9 +60,10 @@ namespace iparking
 
                 mProgressBar = FindViewById<ProgressBar>(Resource.Id.progressBar);
                 mWebView = FindViewById<WebView>(Resource.Id.webView);
-
                 mWebView.Settings.JavaScriptEnabled = true;
-                mWebView.LoadUrl(ConfigManager.WebService + "/index.php");
+
+                string param = "pk_id=" + mNavData[0] + "&vt_id=" + mNavData[1] + "&cl_id=" + mNavData[2];
+                mWebView.LoadUrl(ConfigManager.WebService + "/navigation.php?" + param);
                 mWebView.SetWebViewClient(mWebClient);
             }
             catch (Exception ex)

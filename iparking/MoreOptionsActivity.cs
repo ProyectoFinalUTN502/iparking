@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace iparking
 {
-    [Activity(Label = "MoreOptionsActivity", Theme = "@style/MyTheme.Base", NoHistory = false)]
+    [Activity(Label = "MoreOptionsActivity", Theme = "@style/MyTheme.Base")]
     public class MoreOptionsActivity : Activity
     {
         ImageView mBack;
@@ -43,13 +43,13 @@ namespace iparking
         private void MNewSearch_Click(object sender, EventArgs e)
         {
             // CU: Buscar Establecimiento Por Parametros
-            Managment.ActivityManager.TakeMeTo(this, typeof(NewSearchActivity), true);
+            Managment.ActivityManager.TakeMeTo(this, typeof(NewSearchActivity), false);
         }
 
         private void MNewLocation_Click(object sender, EventArgs e)
         {
             // CU: Buscar Establecimiento en Mapa
-            Managment.ActivityManager.TakeMeTo(this, typeof(MainSearchLocationActivity), true);
+            Managment.ActivityManager.TakeMeTo(this, typeof(MainSearchLocationActivity), false);
         }
 
         private void MHistory_Click(object sender, EventArgs e)

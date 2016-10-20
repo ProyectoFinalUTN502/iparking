@@ -16,13 +16,13 @@ using iparking.Managment;
 
 namespace iparking
 {
-    [Activity(Label = "LoginActivity", Theme = "@style/MyTheme.Base", NoHistory=true )]
+    [Activity(Label = "LoginActivity", Theme = "@style/MyTheme.Base")]
     public class LoginActivity : Activity
     {
         TextView mTextUser;
         TextView mTextPassword;
         TextView mTextError;
-
+        ProgressBar mProgressBar;
         Button mButtonLogin;
         TextView mNewUser;
 
@@ -37,17 +37,18 @@ namespace iparking
             mTextUser = FindViewById<TextView>(Resource.Id.txtUserEmail);
             mTextPassword = FindViewById<TextView>(Resource.Id.txtUserPassword);
             mTextError = FindViewById<TextView>(Resource.Id.textViewError);
-
+            mProgressBar = FindViewById<ProgressBar>(Resource.Id.progressBar);
             mButtonLogin = FindViewById<Button>(Resource.Id.btnLogin);
             mNewUser = FindViewById<TextView>(Resource.Id.txtNewUser);
 
+            mProgressBar.Visibility = ViewStates.Invisible;
             mButtonLogin.Click += MButtonLogin_Click;
             mNewUser.Click += MNewUser_Click;
         }
 
         private void MNewUser_Click(object sender, EventArgs e)
         {
-            Managment.ActivityManager.TakeMeTo(this, typeof(RegisterUserActivity), true);
+            Managment.ActivityManager.TakeMeTo(this, typeof(RegisterUserActivity), false);
         }
 
         private void MButtonLogin_Click(object sender, EventArgs e)
@@ -64,21 +65,33 @@ namespace iparking
             }
             else
             {
+                mProgressBar.Visibility = ViewStates.Visible;
                 mTextError.Visibility = ViewStates.Invisible;
+                Login();
             }
+        }
 
-            // Consulta Web Service con ese usuario y ese password
-            System.Net.WebClient wclient = new System.Net.WebClient();
-            Uri uri = new Uri(ConfigManager.WebService + "/authenticate.php");
-            NameValueCollection param = new NameValueCollection();
+        public void Login()
+        {
+            try
+            {
+                // Consulta Web Service con ese usuario y ese password
+                System.Net.WebClient wclient = new System.Net.WebClient();
+                Uri uri = new Uri(ConfigManager.WebService + "/authenticate.php");
+                NameValueCollection param = new NameValueCollection();
 
-            param.Add("email", mClient.email);
-            param.Add("password", mClient.HashPassword());
+                param.Add("email", mClient.email);
+                param.Add("password", mClient.HashPassword());
 
-            wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted;
-            wclient.UploadValuesAsync(uri, param);
-
-            
+                wclient.UploadValuesCompleted += Wclient_UploadValuesCompleted;
+                wclient.UploadValuesAsync(uri, param);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" ** ERROR ** : " + ex.Message);
+                mTextError.Text = "Lo sentimos, ha ocurrido un error\nAguarde unos minutos e intente nuevamente";
+                mTextError.Visibility = ViewStates.Visible;
+            }
         }
 
         private void Wclient_UploadValuesCompleted(object sender, System.Net.UploadValuesCompletedEventArgs e)
@@ -109,7 +122,12 @@ namespace iparking
             catch (Exception ex)
             {
                 Console.WriteLine(" ** ERROR ** : " + ex.Message);
-                Managment.ActivityManager.TakeMeTo(this, typeof(ErrorActivity), true);
+                mTextError.Text = "Lo sentimos, ha ocurrido un error\nAguarde unos minutos e intente nuevamente";
+                mTextError.Visibility = ViewStates.Visible;
+            } 
+            finally
+            {
+                mProgressBar.Visibility = ViewStates.Invisible;
             }
         }
     }

@@ -136,8 +136,8 @@ namespace iparking
                 }
                 else
                 {
-                    // Vuelvo a la Pagina Principal
-                    Managment.ActivityManager.TakeMeTo(this, typeof(MainActivity), true);
+                    // Vuelvo a la Pagina de Opciones
+                    Managment.ActivityManager.TakeMeTo(this, typeof(MoreOptionsActivity), true);
                 }
             } catch (Exception ex)
             {
