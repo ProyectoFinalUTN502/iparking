@@ -358,7 +358,7 @@ namespace iparking
             navData.Add(e.ClientID);
 
             Console.WriteLine("** Ingreso a: " + p + " " + vt + " " + c + " **");
-            Managment.ActivityManager.TakeMeTo(this, typeof(NavigationActivity), false, navData);
+            Managment.ActivityManager.TakeMeTo(this, typeof(NavigationActivity), true, navData);
         }
 
 

@@ -34,6 +34,7 @@ namespace iparking
         private FragmentTransaction trans;
         private DialogParkingSearch dialog;
         private DialogParkingEnter dialogEnter;
+        private DialogParkingNewUser dialogNewUser;
 
         private List<Parkinglot> mParkinglots;
         private System.Net.WebClient mClient;
@@ -49,6 +50,7 @@ namespace iparking
         private FileManager fm;
 
         private int mPosition;
+        private bool isFirst;
 
         public void OnProviderDisabled(string provider) {}
 
@@ -83,6 +85,7 @@ namespace iparking
             mImageReSearch = FindViewById<ImageView>(Resource.Id.imageViewReSearch);
             mImageReSearch.Click += MImageReSearch_Click;
 
+            ShowInstructions();
             InitializeLocationManager();
             SetUpMap();
         }
@@ -96,13 +99,25 @@ namespace iparking
             {
                 mMap.Clear();
                 mParkinglots.Clear();
-                searchParkinglots();
             }
+            searchParkinglots();
         }
 
         private void MImageMore_Click(object sender, EventArgs e)
         {
             Managment.ActivityManager.TakeMeTo(this, typeof(MoreOptionsActivity), false);
+        }
+
+        public void ShowInstructions()
+        {
+            isFirst = Convert.ToBoolean(fm.GetValue("first"));
+            if(isFirst)
+            {
+                fm.SetValue("first", "false");
+                trans = FragmentManager.BeginTransaction();
+                dialogNewUser = new DialogParkingNewUser();
+                dialogNewUser.Show(trans, "New User");
+            }
         }
 
         public void InitializeLocationManager()
@@ -202,7 +217,7 @@ namespace iparking
             // Establezco el tipo de Mapa (Normal, Stelite, Hibrido, etc...)
             mMap.MapType = GoogleMap.MapTypeNormal;
 
-            searchParkinglots();
+            //searchParkinglots();
         }
 
         public void searchParkinglots()
@@ -369,7 +384,7 @@ namespace iparking
             navData.Add(e.ClientID);
 
             Console.WriteLine("** Ingreso a: " + p + " " + vt + " " + c + " **");
-            Managment.ActivityManager.TakeMeTo(this, typeof(NavigationActivity), false, navData);
+            Managment.ActivityManager.TakeMeTo(this, typeof(NavigationActivity), true, navData);
         }
 
         //private LatLng GetClientLocation()

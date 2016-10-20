@@ -33,16 +33,20 @@ namespace iparking
 
             string id = fm.GetValue("id");
             string email = fm.GetValue("email");
-            string password = fm.GetValue("password"); 
+            string password = fm.GetValue("password");
 
-            if (id == String.Empty || email == String.Empty || password == String.Empty)
+            bool exp = (id == String.Empty || email == String.Empty || password == String.Empty);
+
+            if (exp)
             {
-                // Redireccionar a Instrucciones
+                // Es la primera vez, redireccionar a Instrucciones
+                fm.SetValue("first", "true");
                 Managment.ActivityManager.TakeMeTo(this, typeof(InstructionsFirstActivity), true);
             }
             else
             {
-                // Realizo el login con las credenciales provistas
+                // Hay credenciales de la ultima vez, realizo el login con las credenciales provistas
+                fm.SetValue("first", "false");
                 login(email, password);
             }
 
