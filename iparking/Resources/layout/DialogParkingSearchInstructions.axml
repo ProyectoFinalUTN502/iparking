@@ -7,7 +7,7 @@
     android:weightSum="100">
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="350dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout1">
         <TextView
@@ -24,43 +24,43 @@
         <TextView
             android:text="Posicione el Marcador en la posicion que desee"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:textColor="#505050"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:gravity="center"
+            android:gravity="fill_vertical"
             android:textSize="14sp" />
         <TextView
             android:text="Se utilizara esa posicion como centro de busqueda"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:textColor="#505050"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:gravity="center"
+            android:gravity="fill_vertical"
             android:textSize="14sp" />
         <TextView
             android:text="Al finalizar, inicie la Busqueda presionando la lupa"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:textColor="#505050"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:gravity="center"
+            android:gravity="fill_vertical"
             android:textSize="14sp" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_width="350dp"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
         android:id="@+id/linearLayout2">
         <Button

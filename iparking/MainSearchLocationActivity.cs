@@ -97,25 +97,14 @@ namespace iparking
 
         private void MImageSearch_Click(object sender, EventArgs e)
         {
-            if (dialog != null)
-            {
-                dialog.Dismiss();
-                dialog = null;
-            }
-
-            if (dialogInstructions != null)
-            {
-                dialogInstructions.Dismiss();
-                dialogInstructions = null;
-            }
-
-            if (dialogEnter != null)
-            {
-                dialogEnter.Dismiss();
-                dialogEnter = null;
-            }
+            if (dialog != null){ dialog.Dismiss(); }
+            if (dialogInstructions != null) { dialogInstructions.Dismiss(); }
+            if (dialogEnter != null) { dialogEnter.Dismiss(); }
 
             if (mMarkerCenter == null || mCenterPosition == null) { return; }
+
+            mParkinglots.Clear();
+            mPosition = 0;
 
             SearchParkinglots();
         }
@@ -238,7 +227,8 @@ namespace iparking
                 mMarkerUser != null &&
                 mMarkerParking != null &&
                 dialog != null &&
-                dialogEnter != null;
+                dialogEnter != null &&
+                dialogInstructions != null;
 
             if (control)
             {
@@ -246,6 +236,7 @@ namespace iparking
 
                 dialog.Dismiss();
                 dialogEnter.Dismiss();
+                dialogInstructions.Dismiss();
                 mMap.Clear();
                 mMap.AddMarker(mMarkerParking);
                 mMap.AddMarker(mMarkerUser);

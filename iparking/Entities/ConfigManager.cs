@@ -20,9 +20,12 @@ namespace iparking.Entities
         public const String WebService = "http://192.168.1.101/iparkservice";
         public const String GoogleService = "https://maps.googleapis.com/maps/api/directions/json?key=" + GoogleAPIKey + "&";
 
-        // Coordenadas por defecto para centrar el Mapa (Obelisco -34.6037345,-58.3837591)
-        public const Double DefaultLatMap = -34.5432143;//-34.542496;
-        public const Double DefaultLongMap = -58.5675542; // -58.5670585;
+        // Coordenadas por defecto para centrar el Mapa
+        // Obelisco : -34.6037345,-58.3837591
+        // Medrano  : -34.5985378,-58.4202996
+        // Casa     :
+        public const Double DefaultLatMap = -34.5985378;
+        public const Double DefaultLongMap = -58.4202996;
 
         // Un Zoom que me permite ver bien donde estoy parado
         public const Int32 DefaultZoomMap = 15;

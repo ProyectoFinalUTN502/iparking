@@ -47,5 +47,14 @@ namespace iparking.Managment
             return mo;
         }
 
+        public static MarkerOptions CreateUserDraggable(LatLng position)
+        {
+            MarkerOptions mo = new MarkerOptions();
+            mo.SetPosition(position);
+            mo.Draggable(true);
+
+            return mo;
+        }
+
     }
 }

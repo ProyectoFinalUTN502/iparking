@@ -98,6 +98,7 @@ namespace iparking
             if (mMap != null && mParkinglots != null)
             {
                 mMap.Clear();
+                mPosition = 0;
                 mParkinglots.Clear();
             }
             searchParkinglots();

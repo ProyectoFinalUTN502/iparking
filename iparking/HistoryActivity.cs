@@ -24,6 +24,9 @@ namespace iparking
         ListView mListView;
         HistoryListAdapter mListAdapter;
 
+        private FragmentTransaction trans;
+        private DialogParkingHistoric dialog;
+
         ImageView mBack;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -83,7 +86,13 @@ namespace iparking
 
         private void MListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            return;
+            int position = e.Position;
+
+            Historic h = mHistoric[position];
+
+            trans = FragmentManager.BeginTransaction();
+            dialog = new DialogParkingHistoric(h);
+            dialog.Show(trans, "History");
         }
     }
 }
