@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9">
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+        <ImageView
+            android:id="@+id/imageViewAddress"
+            android:src="@drawable/location"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="15"
+            android:layout_marginLeft="3dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true" />
+        <TextView
+            android:text="20.10.2016 22:00"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewDate"
+            android:textSize="18sp"
+            android:textColor="#505050"
+            android:layout_weight="33"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="7dp" />
+        <TextView
+            android:id="@+id/textViewParkinglot"
+            android:text="Medrano Parking"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#505050"
+            android:layout_weight="50"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="7dp" />
+    </LinearLayout>
+</LinearLayout>

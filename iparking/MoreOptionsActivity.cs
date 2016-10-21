@@ -54,10 +54,8 @@ namespace iparking
 
         private void MHistory_Click(object sender, EventArgs e)
         {
-            //Intent intent = new Intent(this, typeof(HistoryActivity));
-            //this.StartActivity(intent);
-            //this.OverridePendingTransition(Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
-            //this.Finish();
+            // CU: Mostrar Historial Uso
+            Managment.ActivityManager.TakeMeTo(this, typeof(HistoryActivity), false);
         }
 
         private void MEditProfile_Click(object sender, EventArgs e)
