@@ -53,6 +53,8 @@ namespace iparking
         private ImageView mImageSearch;
         private ImageView mImageBack;
         private ProgressBar mProgressBar;
+
+        private bool mClean;
         
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -63,6 +65,7 @@ namespace iparking
 
             SetContentView(Resource.Layout.MainNewSearch);
 
+            mClean = false;
             locationProvider = string.Empty;
             currentLocation = null;
 
@@ -97,16 +100,55 @@ namespace iparking
 
         private void MImageSearch_Click(object sender, EventArgs e)
         {
-            if (dialog != null){ dialog.Dismiss(); }
+            if (mClean)
+            {
+                ClearLocation();
+                mClean = false;
+            } else
+            {
+                if (dialog != null){ dialog.Dismiss(); }
+                if (dialogInstructions != null) { dialogInstructions.Dismiss(); }
+                if (dialogEnter != null) { dialogEnter.Dismiss(); }
+
+                if (mMarkerCenter == null || mCenterPosition == null) { return; }
+
+                mParkinglots.Clear();
+                mPosition = 0;
+
+                SearchParkinglots();
+                mClean = true;
+            }
+
+        }
+
+        public void ClearLocation()
+        {
+            if (dialog != null) { dialog.Dismiss(); }
             if (dialogInstructions != null) { dialogInstructions.Dismiss(); }
             if (dialogEnter != null) { dialogEnter.Dismiss(); }
 
-            if (mMarkerCenter == null || mCenterPosition == null) { return; }
+            dialog = null;
+            dialogInstructions = null;
+            dialogEnter = null;
 
-            mParkinglots.Clear();
-            mPosition = 0;
+            if (mMap != null)
+            {
+                // Elimino la lista de Establecimientos
+                mPosition = 0;
+                mParkinglots.Clear();
 
-            SearchParkinglots();
+                // Limipio el Mapa yCargo el Marcador que va a servir de centro y la posicion global
+                mMap.Clear();
+                mMarkerCenter = MarkerManager.CreateUserDragable();
+                LatLng latlng = mMarkerCenter.Position;
+                CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(latlng, ConfigManager.DefaultDraggZoomMap);
+                mMap.MoveCamera(camera);
+                mCenterPosition = mMarkerCenter.Position;
+
+                mMap.AddMarker(mMarkerCenter);
+                mMap.MarkerDragEnd += MMap_MarkerDragEnd;
+            }
+
         }
 
         public void ShowInstructions()
@@ -259,6 +301,7 @@ namespace iparking
             }
             catch (Exception ex)
             {
+                RunOnUiThread(() => { mProgressBar.Visibility = ViewStates.Invisible; });
                 Console.WriteLine("** Error ** : No se pudo conectar a Google Route /n " + ex.Message);
                 //Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
             }

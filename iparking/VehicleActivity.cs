@@ -68,8 +68,10 @@ namespace iparking
         {
             int position = e.Position;
 
+            // Guardo el Vehicle Type ID
+            mFile.SetValue("vt_id", mVehicles[position].vehicleTypeID.ToString());//mListAdapter.GetItemId(position).ToString());
             // Guardo el Vehicle ID
-            mFile.SetValue("vt_id", mListAdapter.GetItemId(position).ToString());
+            mFile.SetValue("vehicle", mVehicles[position].id.ToString());
 
             // Lo llevo a Main 
             Managment.ActivityManager.TakeMeTo(this, typeof(MainActivity), true);

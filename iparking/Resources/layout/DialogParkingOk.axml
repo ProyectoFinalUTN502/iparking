@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialogstyle"
+    android:weightSum="100">
+    <TextView
+        android:text="¡Has llegado a tu destino!"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/textView1"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="24sp" />
+    <TextView
+        android:text="Gracias por utilizar iParking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textColor="#999999"
+        android:gravity="center"
+        android:textSize="22sp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/space1" />
+    <Button
+        android:text="Continuar"
+        android:id="@+id/buttonConfirm"
+        android:background="@drawable/dialogbuttonstyle"
+        android:textColor="#F9F9F9"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp" />
+</LinearLayout>

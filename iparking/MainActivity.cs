@@ -217,8 +217,7 @@ namespace iparking
 
             // Establezco el tipo de Mapa (Normal, Stelite, Hibrido, etc...)
             mMap.MapType = GoogleMap.MapTypeNormal;
-
-            //searchParkinglots();
+            mMap.MyLocationEnabled = true;
         }
 
         public void searchParkinglots()
@@ -470,10 +469,10 @@ namespace iparking
             }
             catch (Exception ex)
             {
+                RunOnUiThread(() => { mProgressBar.Visibility = ViewStates.Invisible; });
                 Console.WriteLine("** Error ** : El servidor Google Route no devolvio valores correctos /n " + ex.Message);
                 //Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
             }
-
         }
     }
 }

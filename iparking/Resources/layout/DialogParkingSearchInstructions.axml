@@ -7,7 +7,7 @@
     android:weightSum="100">
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="250dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout1">
         <TextView
@@ -22,7 +22,7 @@
             android:gravity="center"
             android:layout_marginTop="10dp" />
         <TextView
-            android:text="Posicione el Marcador en la posicion que desee"
+            android:text="1.Posicione el Marcador en la posicion que desee"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -34,18 +34,18 @@
             android:gravity="fill_vertical"
             android:textSize="14sp" />
         <TextView
-            android:text="Se utilizara esa posicion como centro de busqueda"
+            android:text="2.Se utilizara esa posicion como centro de busqueda"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:textColor="#505050"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="5dp"
             android:gravity="fill_vertical"
             android:textSize="14sp" />
         <TextView
-            android:text="Al finalizar, inicie la Busqueda presionando la lupa"
+            android:text="3.Al finalizar, inicie la Busqueda presionando la lupa"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="250dp"
             android:layout_height="wrap_content"

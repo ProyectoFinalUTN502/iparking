@@ -78,6 +78,7 @@ namespace iparking
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine("** Error al cargar el Historial **");
                     //Managment.ActivityManager.TakeMeTo(this, typeof(ErrorActivity), true);
                 }
 

@@ -30,7 +30,7 @@
         android:layout_weight="25"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayout4"
+        android:id="@+id/linearLayout2"
         android:weightSum="100"
         android:padding="0dp"
         android:clickable="true"

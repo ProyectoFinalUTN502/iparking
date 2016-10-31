@@ -250,6 +250,7 @@ namespace iparking
             }
             catch (Exception ex)
             {
+                RunOnUiThread(() => { mProgressBar.Visibility = ViewStates.Invisible; });
                 Console.WriteLine("** Error ** : No se pudo conectar a Google Route /n " + ex.Message);
                 //Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
             }
@@ -298,6 +299,7 @@ namespace iparking
 
             // Establezco el tipo de Mapa (Normal, Stelite, Hibrido, etc...)
             mMap.MapType = GoogleMap.MapTypeNormal;
+            mMap.MyLocationEnabled = true;
 
             SearchParkinglots();
         }
