@@ -6,7 +6,7 @@
     android:background="@drawable/dialogstyle"
     android:weightSum="100">
     <TextView
-        android:text="¡Has llegado a tu destino!"
+        android:text="¿Eliminar Vehiculo?"
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:id="@+id/textView1"
@@ -14,21 +14,9 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="20sp" />
-    <TextView
-        android:text="Gracias por utilizar iParking"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:textColor="#999999"
-        android:gravity="center"
-        android:textSize="18sp" />
-    <Space
-        android:layout_width="260dp"
-        android:layout_height="20dp"
-        android:id="@+id/space1" />
     <Button
         android:text="Continuar"
-        android:id="@+id/buttonConfirm"
+        android:id="@+id/buttonDelete"
         android:background="@drawable/dialogbuttonstyle"
         android:textColor="#F9F9F9"
         android:layout_width="200dp"

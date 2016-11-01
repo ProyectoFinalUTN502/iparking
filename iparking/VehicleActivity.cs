@@ -31,6 +31,7 @@ namespace iparking
 
         FragmentTransaction trans;
         DialogParkingAddVehicle dialogAdd;
+        DialogDelVehicle dialogDel;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -102,6 +103,7 @@ namespace iparking
                     mListAdapter = new VehicleListAdapter(this, mVehicles);
                     mListView.Adapter = mListAdapter;
                     mListView.ItemClick += MListView_ItemClick;
+                    mListView.ItemLongClick += MListView_ItemLongClick;
                 }
                 catch (Exception ex)
                 {
@@ -109,6 +111,20 @@ namespace iparking
                 }
 
             });
+        }
+
+        private void MListView_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+        {
+            FragmentTransaction trans = FragmentManager.BeginTransaction();
+            dialogDel = new DialogDelVehicle(e.Position);
+            dialogDel.Show(trans, "Eliminar Vehiculo");
+            dialogDel.mDeleteEvent += DialogDel_mDeleteEvent;
+        }
+
+        private void DialogDel_mDeleteEvent(object sender, OnDeleteEvents e)
+        {
+            Vehicle v = mVehicles[e.Position];
+            RemVehicle(v);
         }
 
         public void AddVehicle(Vehicle vehicle)
@@ -129,6 +145,45 @@ namespace iparking
             catch (Exception ex)
             {
                 Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
+            }
+        }
+
+        public void RemVehicle(Vehicle vehicle)
+        {
+            try
+            {
+                System.Net.WebClient wclient = new System.Net.WebClient();
+                Uri uri = new Uri(ConfigManager.WebService + "/delVehicle.php?id=" + vehicle.id.ToString());
+                
+                wclient.DownloadDataAsync(uri);
+                wclient.DownloadDataCompleted += Wclient_DownloadDataCompleted;
+            }
+            catch (Exception ex)
+            {
+                Managment.ActivityManager.ShowError(this, new Error(errCode, errMsg));
+            }
+        }
+
+        private void Wclient_DownloadDataCompleted(object sender, System.Net.DownloadDataCompletedEventArgs e)
+        {
+            try
+            {
+                string json = Encoding.UTF8.GetString(e.Result);
+                OperationResult or = JsonConvert.DeserializeObject<OperationResult>(json);
+
+                if (or.error)
+                {
+                    // Ocurrio un error
+                    Console.WriteLine("** Error ** : No se pudo eliminar el vehiculo ");
+                }
+                else
+                {
+                    getClientVehicles();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("** Error ** : No se pudo eliminar el vehiculo ");
             }
         }
 

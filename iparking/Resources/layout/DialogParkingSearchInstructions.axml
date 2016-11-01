@@ -22,7 +22,7 @@
             android:gravity="center"
             android:layout_marginTop="10dp" />
         <TextView
-            android:text="1.Posicione el Marcador en la posicion que desee"
+            android:text="1.Presiones sobe el Marcador"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -31,10 +31,10 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:gravity="fill_vertical"
+            android:gravity="center"
             android:textSize="14sp" />
         <TextView
-            android:text="2.Se utilizara esa posicion como centro de busqueda"
+            android:text="2.Muevalo sobre el Mapa"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -42,10 +42,10 @@
             android:textColor="#505050"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
-            android:gravity="fill_vertical"
+            android:gravity="center"
             android:textSize="14sp" />
         <TextView
-            android:text="3.Al finalizar, inicie la Busqueda presionando la lupa"
+            android:text="3.Inicie la Busqueda"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:textColor="#505050"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:gravity="fill_vertical"
+            android:gravity="center"
             android:textSize="14sp" />
     </LinearLayout>
     <LinearLayout

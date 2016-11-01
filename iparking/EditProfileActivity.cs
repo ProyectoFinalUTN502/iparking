@@ -161,7 +161,7 @@ namespace iparking
                     }
 
                     RunOnUiThread(() => { 
-                        mSeekBarRange.Progress = mProfile.range;
+                        mSeekBarRange.Progress = mProfile.range - 1;
                         mTextViewRange.Text = "Rango de Búsqueda " + mProfile.range.ToString() + " Km";
                         mTextPrice.Text = mProfile.maxPrice.ToString();
 
