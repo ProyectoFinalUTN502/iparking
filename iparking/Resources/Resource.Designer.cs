@@ -1762,46 +1762,49 @@ namespace iparking
 			public const int Instructions_1 = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int location = 2130837637;
+			public const int iParking_2 = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int new_location = 2130837638;
+			public const int location = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int not_found = 2130837639;
-			
-			// aapt resource value: 0x7f020092
-			public const int notification_template_icon_bg = 2130837650;
+			public const int new_location = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int parking = 2130837640;
+			public const int not_found = 2130837640;
+			
+			// aapt resource value: 0x7f020093
+			public const int notification_template_icon_bg = 2130837651;
 			
 			// aapt resource value: 0x7f020089
-			public const int previous = 2130837641;
+			public const int parking = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int price = 2130837642;
+			public const int previous = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int Slide1 = 2130837643;
+			public const int price = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int Slide2 = 2130837644;
+			public const int Slide1 = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int Slide3 = 2130837645;
+			public const int Slide2 = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int splash = 2130837646;
+			public const int Slide3 = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int splash_screen = 2130837647;
+			public const int splash = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int update = 2130837648;
+			public const int splash_screen = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int vehicle = 2130837649;
+			public const int update = 2130837649;
+			
+			// aapt resource value: 0x7f020092
+			public const int vehicle = 2130837650;
 			
 			static Drawable()
 			{
